@@ -7,16 +7,16 @@
         <Menu Height="35" VerticalAlignment="Top" Background="#FF343434" Foreground="White" BorderBrush="Black">
             <MenuItem Header="Authentification" Background="#FF343434">
                 <MenuItem Header="Login" Foreground="White" Background="#FF343434"/>
-                <MenuItem Header="Logout" Background="#FF343434"/>
+                <MenuItem Header="Logout" Background="#FF343434" IsEnabled="False"/>
             </MenuItem>
             <MenuItem Header="Options" Background="#FF343434">
                 <MenuItem Header="Lancement Arma3" Background="#FF343434"/>
                 <MenuItem Header="Lancement GameHub" Background="#FF343434"/>
-                <MenuItem Header="Debug" Background="#FF343434">
-                    <MenuItem Header="Authentification Method" Background="#FF343434"/>
-                    <MenuItem Header="Server Link" Background="#FF343434"/>
-                    <MenuItem Header="Arma3 Link" Background="#FF343434"/>
-                    <MenuItem Header="General Logic" Background="#FF343434"/>
+                <MenuItem Header="Debug (Only Authorized)" Background="#FF343434">
+                    <MenuItem Header="Authentification Method" Background="#FF343434" IsEnabled="False"/>
+                    <MenuItem Header="Server Link" Background="#FF343434" IsEnabled="False"/>
+                    <MenuItem Header="Arma3 Link" Background="#FF343434" IsEnabled="False"/>
+                    <MenuItem Header="General Logic" Background="#FF343434" IsEnabled="False"/>
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="?" Background="#FF343434">
@@ -34,7 +34,7 @@
             <Label Foreground="White">Update : All Ok</Label>
         </StatusBar>
         <Grid Margin="0,35">
-            <Button Content="Lancer Arma 3" HorizontalAlignment="Left" Margin="10,263,0,0" VerticalAlignment="Top" Width="117" Background="#FF41B1E1" Foreground="White"/>
+            <Button Content="Lancer Arma 3" HorizontalAlignment="Left" Margin="10,263,0,0" VerticalAlignment="Top" Width="117" Background="#FF41B1E1" Foreground="White" Click="Launcher_StartA3"/>
         </Grid>
     </Grid>
 </Controls:MetroWindow>
