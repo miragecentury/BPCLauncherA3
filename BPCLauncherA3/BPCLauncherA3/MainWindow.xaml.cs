@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Runtime.InteropServices;
 
 namespace BPCLauncherA3
 {
@@ -20,9 +21,20 @@ namespace BPCLauncherA3
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Launcher_Close(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void title_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
         }
     }
 }
