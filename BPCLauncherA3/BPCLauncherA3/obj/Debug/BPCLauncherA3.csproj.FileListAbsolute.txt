@@ -18,3 +18,5 @@ E:\Documents\GitHub\BPCLauncherA3\BPCLauncherA3\BPCLauncherA3\obj\Debug\App.baml
 E:\Documents\GitHub\BPCLauncherA3\BPCLauncherA3\BPCLauncherA3\bin\Debug\NetMQ.dll
 E:\Documents\GitHub\BPCLauncherA3\BPCLauncherA3\BPCLauncherA3\obj\Debug\Login.baml
 E:\Documents\GitHub\BPCLauncherA3\BPCLauncherA3\BPCLauncherA3\obj\Debug\Login.g.cs
+E:\Documents\GitHub\BPCLauncherA3\BPCLauncherA3\BPCLauncherA3\obj\Debug\Arma3Configs.baml
+E:\Documents\GitHub\BPCLauncherA3\BPCLauncherA3\BPCLauncherA3\obj\Debug\Arma3Configs.g.cs

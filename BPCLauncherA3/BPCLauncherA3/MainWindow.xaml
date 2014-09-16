@@ -10,8 +10,7 @@
                 <MenuItem Header="Logout" Background="#FF343434" IsEnabled="False"/>
             </MenuItem>
             <MenuItem Header="Options" Background="#FF343434">
-                <MenuItem Header="Lancement Arma3" Background="#FF343434"/>
-                <MenuItem Header="Lancement GameHub" Background="#FF343434"/>
+                <MenuItem Header="Lancement Arma3" Background="#FF343434" Click="Launcher_Options_Arma3"/>
                 <MenuItem Header="Debug (Only Authorized)" Background="#FF343434">
                     <MenuItem Header="Authentification Method" Background="#FF343434" IsEnabled="False"/>
                     <MenuItem Header="Server Link" Background="#FF343434" IsEnabled="False"/>
@@ -19,22 +18,24 @@
                     <MenuItem Header="General Logic" Background="#FF343434" IsEnabled="False"/>
                 </MenuItem>
             </MenuItem>
+            <MenuItem Header="Check Update" Background="#FF343434"/>
             <MenuItem Header="?" Background="#FF343434">
-                <MenuItem Header="Check Update" Background="#FF343434"/>
+                <MenuItem Header="Site Projet X" Background="#FF343434" Click="Launcher_Site_ProjetX"/>
+                <MenuItem Header="Site French Life" Background="#FF343434" Click="Launcher_Site_FrenchLife"/>
                 <MenuItem Header="A propos" Background="#FF343434"/>
             </MenuItem>
         </Menu>
         <StatusBar Height="35" Margin="0,337,0,0" Background="#FF343434" BorderBrush="White">
-            <Label Foreground="White">Not Authentified</Label>
+            <Label Foreground="White" Content="Not Authentified"/>
             <Separator/>
-            <Label Foreground="White">Serveur Link : Off</Label>
+            <Label Foreground="White" Content="Serveur Link : Off"/>
             <Separator/>
-            <Label Foreground="White">Arma3 Link : Off</Label>
+            <Label Foreground="White" Content="Arma3 Link : Off" />
             <Separator/>
-            <Label Foreground="White">Update : All Ok</Label>
+            <Label x:Name="Launcher_Label_Uptodate" Foreground="White" Content="Update : All Ok" />
         </StatusBar>
         <Grid Margin="0,35">
-            <Button x:Name="Button_Launch_ProjetX" Content="Lancer Arma 3 - BPC Projet X" HorizontalAlignment="Left" Margin="10,263,0,0" VerticalAlignment="Top" Width="190" Click="Launcher_StartA3_ProjetX" IsEnabled="False" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" />
+            <Button x:Name="Button_Launch_ProjetX" Content="Lancer Arma 3 - BPC Projet X" HorizontalAlignment="Left" Margin="10,263,0,0" VerticalAlignment="Top" Width="190" Click="Launcher_StartA3_ProjetX" IsEnabled="False" />
             <Button x:Name="Button_Launch_FrenchLife" Content="Lancer Arma 3 - French Life" HorizontalAlignment="Left" Margin="205,263,0,0" VerticalAlignment="Top" Width="195" Click="Launcher_StartA3_FrenchLife" Background="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" Foreground="White"/>
             <Button x:Name="Button_Launch_Arma3" Content="Lancer Arma 3 (vanilla)" HorizontalAlignment="Left" Margin="405,263,0,0" VerticalAlignment="Top" Width="160" Click="Launcher_StartA3" IsEnabled="true" Background="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Foreground="White"/>
         </Grid>
