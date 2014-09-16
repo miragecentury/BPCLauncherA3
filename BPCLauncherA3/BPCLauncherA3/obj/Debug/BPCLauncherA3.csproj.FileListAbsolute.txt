@@ -11,3 +11,7 @@ E:\Documents\GitHub\BPCLauncherA3\BPCLauncherA3\BPCLauncherA3\obj\Debug\BPCLaunc
 E:\Documents\GitHub\BPCLauncherA3\BPCLauncherA3\BPCLauncherA3\obj\Debug\BPCLauncherA3.csproj.GenerateResource.Cache
 E:\Documents\GitHub\BPCLauncherA3\BPCLauncherA3\BPCLauncherA3\obj\Debug\BPCLauncherA3.exe
 E:\Documents\GitHub\BPCLauncherA3\BPCLauncherA3\BPCLauncherA3\obj\Debug\BPCLauncherA3.pdb
+E:\Documents\GitHub\BPCLauncherA3\BPCLauncherA3\BPCLauncherA3\bin\Debug\MahApps.Metro.dll
+E:\Documents\GitHub\BPCLauncherA3\BPCLauncherA3\BPCLauncherA3\bin\Debug\System.Windows.Interactivity.dll
+E:\Documents\GitHub\BPCLauncherA3\BPCLauncherA3\BPCLauncherA3\bin\Debug\MahApps.Metro.xml
+E:\Documents\GitHub\BPCLauncherA3\BPCLauncherA3\BPCLauncherA3\obj\Debug\App.baml
