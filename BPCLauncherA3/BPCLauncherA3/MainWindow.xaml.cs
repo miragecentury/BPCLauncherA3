@@ -13,8 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Runtime.InteropServices;
+using Microsoft.Win32;
 using MahApps.Metro.Controls;
-
+using System.Diagnostics;
 
 namespace BPCLauncherA3
 {
@@ -34,6 +35,8 @@ namespace BPCLauncherA3
         private Boolean isAuthentified = false;
         //
         private Boolean checkUptodateIncomming = false;
+        //
+        private String Arma3Path = "";
 
         // 0 : not check
         // 1 : need Authentification
@@ -50,6 +53,17 @@ namespace BPCLauncherA3
         public MainWindow()
         {
             InitializeComponent();
+            
+            try
+            {
+                RegistryKey rk = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Clients\StartMenuInternet\Google Chrome\shell\open\command");
+                String test = (String)rk.GetValue("");
+                this.Arma3Path = test;
+            }
+            catch (Exception e)
+            {
+                Console.Write(e.ToString());
+            }
         }
         
         private void title_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -161,6 +175,15 @@ namespace BPCLauncherA3
             this.Button_Launch_ProjetX.IsEnabled = false;
             this.Button_Launch_ProjetX.Foreground = SystemColors.ControlDarkBrush;
             this.Button_Launch_ProjetX.Background = SystemColors.ControlLightBrush;
+
+        }
+
+        private void Arma3_Start(String additionnalargument)
+        {
+            Process arma3 = Process.Start(this.Arma3Path);
+            arma3.WaitForExit();
+            Console.WriteLine("? End of Process ?");
+            this.NotRunning_Arma3();
         }
 
         private void NotRunning_Arma3()
