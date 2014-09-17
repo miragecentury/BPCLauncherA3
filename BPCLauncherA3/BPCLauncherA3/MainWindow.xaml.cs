@@ -56,9 +56,9 @@ namespace BPCLauncherA3
             
             try
             {
-                RegistryKey rk = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Clients\StartMenuInternet\Google Chrome\shell\open\command");
-                String test = (String)rk.GetValue("");
-                this.Arma3Path = test;
+                RegistryKey rk = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Wow6432Node\bohemia interactive\arma 3");
+                String test = (String)rk.GetValue("main");
+                this.Arma3Path = test + @"/arma3.exe";
             }
             catch (Exception e)
             {
@@ -175,14 +175,29 @@ namespace BPCLauncherA3
             this.Button_Launch_ProjetX.IsEnabled = false;
             this.Button_Launch_ProjetX.Foreground = SystemColors.ControlDarkBrush;
             this.Button_Launch_ProjetX.Background = SystemColors.ControlLightBrush;
-
+            this.Arma3_Start("");
         }
 
         private void Arma3_Start(String additionnalargument)
         {
-            Process arma3 = Process.Start(this.Arma3Path);
-            arma3.WaitForExit();
-            Console.WriteLine("? End of Process ?");
+            Console.Write(this.Arma3Path);
+            Process arma3 = new Process();
+            arma3.Exited += test;
+            Process.Start(this.Arma3Path);
+            
+            this.NotRunning_Arma3();
+        }
+
+        static void test(Object sender, EventArgs e)
+        {
+            Console.Write(" ??? EVENT END ... ");
+            Console.Write(" ??? EVENT END ... ");
+            Console.Write(" ??? EVENT END ... ");
+            Console.Write(" ??? EVENT END ... ");
+        }
+
+        public void NotRunning_Arma3(object sender, EventArgs e)
+        {
             this.NotRunning_Arma3();
         }
 
@@ -214,12 +229,12 @@ namespace BPCLauncherA3
 
         private void Launcher_Site_FrenchLife(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://french-life.eu");
+            Process.Start("http://french-life.eu");
         }
 
         private void Launcher_Site_ProjetX(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://nordri.fr");
+            Process.Start("http://nordri.fr");
         }
 
         private void Launcher_Options_Arma3(object sender, RoutedEventArgs e)
