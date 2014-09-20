@@ -1,38 +1,44 @@
-﻿<Controls:MetroWindow x:Class="BPCLauncherA3.Arma3Configs"
+﻿<Controls:MetroWindow
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="BPCLauncherA3.Arma3Configs"
         Title="Arma3Configs" Height="370" Width="600" ResizeMode="NoResize" Closed="MetroWindow_Closed" WindowStartupLocation="CenterScreen">
     <Grid>
         <GroupBox Header="Paramétres de Jeux" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="285" Width="300">
             <Grid Margin="0,0,0,0">
-                <CheckBox Content="Pas d'écran de démarrage" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-                <CheckBox Content="Pas de pause" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top"/>
-                <CheckBox Content="Monde Vide au démarrage" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top"/>
-                <CheckBox Content="Afficher les erreurs de scripts" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top"/>
-                <CheckBox Content="Arrêt de la gestion MultiCore (-noCB)" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top"/>
-                <CheckBox Content="Seulement les fichiers PBO" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top"/>
-                <CheckBox Content="No Log" HorizontalAlignment="Left" Margin="10,160,0,0" VerticalAlignment="Top"/>
-
+                <CheckBox x:Name="noStartScreen" Content="Pas d'écran de démarrage" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Checked="noStartScreen_Checked" Unchecked="noStartScreen_Checked"/>
+                <CheckBox x:Name="noPause" Content="Pas de pause" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Checked="noPause_Checked" Unchecked="noPause_Checked"/>
+                <CheckBox x:Name="emptyWorld" Content="Monde Vide au démarrage" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" Checked="emptyWorld_Checked" Unchecked="emptyWorld_Checked"/>
+                <CheckBox x:Name="showScriptError" Content="Afficher les erreurs de scripts" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top" Checked="showScriptError_Checked" Unchecked="showScriptError_Checked"/>
+                <CheckBox x:Name="noCB" Content="Arrêt de la gestion MultiCore (-noCB)" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Checked="noCB_Checked" Unchecked="noCB_Checked"/>
+                <CheckBox x:Name="onlyPbo" Content="Seulement les fichiers PBO" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" Checked="onlyPbo_Checked" Unchecked="onlyPbo_Checked"/>
+                <CheckBox x:Name="noLog" Content="No Log" HorizontalAlignment="Left" Margin="10,160,0,0" VerticalAlignment="Top" Checked="noLog_Checked" Unchecked="noLog_Checked"/>
             </Grid>
         </GroupBox>
         <GroupBox Header="Paramétres Systèmes" HorizontalAlignment="Left" Margin="315,10,0,0" VerticalAlignment="Top" Width="269" Height="285">
             <Grid Margin="0,0,-2,1">
                 <CheckBox Content="Nombre de Processeurs" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="239"/>
-                <TextBox HorizontalAlignment="Left" Height="23" Margin="10,33,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-                <Slider HorizontalAlignment="Left" Margin="135,33,0,0" VerticalAlignment="Top" Width="94" Height="26"/>
+                <TextBox HorizontalAlignment="Left" Height="23" Margin="10,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+                <Slider HorizontalAlignment="Left" Margin="135,33,0,0" VerticalAlignment="Top" Width="94" Height="26" IsEnabled="False"/>
                 <CheckBox Content="Mémoire max (MB)" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" Width="239"/>
-                <TextBox HorizontalAlignment="Left" Height="23" Margin="10,87,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-                <Slider HorizontalAlignment="Left" Margin="135,87,0,0" VerticalAlignment="Top" Width="94" Height="26"/>
+                <TextBox HorizontalAlignment="Left" Height="23" Margin="10,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+                <Slider HorizontalAlignment="Left" Margin="135,87,0,0" VerticalAlignment="Top" Width="94" Height="26" IsEnabled="False"/>
                 <CheckBox Content="Mémoire Vidéo max (MB)" HorizontalAlignment="Left" Margin="10,118,0,0" VerticalAlignment="Top" Width="239"/>
-                <TextBox HorizontalAlignment="Left" Height="23" Margin="10,141,0,0" TextWrapping="Wrap" Text="X" VerticalAlignment="Top" Width="120"/>
-                <Slider HorizontalAlignment="Left" Margin="135,141,0,0" VerticalAlignment="Top" Width="94" Height="26"/>
-                <CheckBox Content="Extra Thread" HorizontalAlignment="Left" Margin="10,182,0,0" VerticalAlignment="Top" Width="120"/>
-                <ComboBox HorizontalAlignment="Left" Margin="159,182,0,0" VerticalAlignment="Top" Width="55" Height="18" RenderTransformOrigin="1.091,0.385"/>
-                <CheckBox Content="Hyper Threading" HorizontalAlignment="Left" Margin="10,222,0,0" VerticalAlignment="Top" Width="229"/>
+                <TextBox HorizontalAlignment="Left" Height="23" Margin="10,141,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+                <Slider HorizontalAlignment="Left" Margin="135,141,0,0" VerticalAlignment="Top" Width="94" Height="26" IsEnabled="False"/>
+                <ComboBox x:Name="extraThread" HorizontalAlignment="Left" Margin="159,182,0,0" VerticalAlignment="Top" Width="55" Height="18" RenderTransformOrigin="1.091,0.385" SelectionChanged="extraThread_SelectionChanged">
+                    <System:UInt32>0</System:UInt32>
+                    <System:UInt32>1</System:UInt32>
+                    <System:UInt32>3</System:UInt32>
+                    <System:UInt32>5</System:UInt32>
+                    <System:UInt32>7</System:UInt32>
+                </ComboBox>
+                <CheckBox x:Name="hyperThreading" Content="Hyper Threading" HorizontalAlignment="Left" Margin="10,222,0,0" VerticalAlignment="Top" Width="229" Checked="hyperThreading_Checked" Unchecked="hyperThreading_Checked"/>
+                <Label Content="Extra Thread :" HorizontalAlignment="Left" Margin="19,182,0,0" VerticalAlignment="Top" Width="111"/>
             </Grid>
         </GroupBox>
         <Button Content="Annuler" HorizontalAlignment="Left" Margin="509,300,0,0" VerticalAlignment="Top" Width="75" Click="Arma3Configs_Abord"/>
-        <Button Content="Appliquer" HorizontalAlignment="Left" Margin="410,300,0,0" VerticalAlignment="Top" Width="94" Background="#FF41B1E1" Foreground="White"/>
+        <Button Content="Appliquer" HorizontalAlignment="Left" Margin="410,300,0,0" VerticalAlignment="Top" Width="94" Background="#FF41B1E1" Foreground="White" Click="Arma3Configs_Appliquer"/>
     </Grid>
 </Controls:MetroWindow>

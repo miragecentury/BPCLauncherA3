@@ -42,3 +42,5 @@ C:\Users\Zeus\Documents\GitHub\BPCLauncherA3\BPCLauncherA3\BPCLauncherA3\obj\Deb
 C:\Users\Zeus\Documents\GitHub\BPCLauncherA3\BPCLauncherA3\BPCLauncherA3\obj\Debug\BPCLauncherA3.g.resources
 C:\Users\Zeus\Documents\GitHub\BPCLauncherA3\BPCLauncherA3\BPCLauncherA3\obj\Debug\BPCLauncherA3.Properties.Resources.resources
 C:\Users\Zeus\Documents\GitHub\BPCLauncherA3\BPCLauncherA3\BPCLauncherA3\obj\Debug\BPCLauncherA3.csproj.GenerateResource.Cache
+E:\Documents\GitHub\BPCLauncherA3\BPCLauncherA3\BPCLauncherA3\bin\Debug\Westwind.Utilities.Configuration.dll
+E:\Documents\GitHub\BPCLauncherA3\BPCLauncherA3\BPCLauncherA3\bin\Debug\Westwind.Utilities.Configuration.xml

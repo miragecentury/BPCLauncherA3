@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BPCLauncherA3
+namespace BPCLauncherA3.BPC
 {
-    class ServiceApi
+    class Link
     {
+
     }
 }

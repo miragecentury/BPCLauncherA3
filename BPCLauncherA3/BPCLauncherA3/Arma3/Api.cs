@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BPCLauncherA3
+namespace BPCLauncherA3.Arma3
 {
-    class Arma3Link
+    class Api
     {
     }
 }

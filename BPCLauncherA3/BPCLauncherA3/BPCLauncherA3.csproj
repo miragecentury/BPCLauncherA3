@@ -58,6 +58,9 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="Westwind.Utilities.Configuration">
+      <HintPath>..\packages\Westwind.Utilities.Configuration.2.20.01\lib\net40\Westwind.Utilities.Configuration.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -67,8 +70,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ServiceApi.cs" />
-    <Compile Include="ServiceLink.cs" />
+    <Compile Include="Arma3\Api.cs" />
+    <Compile Include="Arma3\Link.cs" />
+    <Compile Include="BPC\Api.cs" />
+    <Compile Include="BPC\Authentification.cs" />
+    <Compile Include="BPC\Link.cs" />
+    <Compile Include="Tools\Userconfigs.cs" />
     <Page Include="Arma3Configs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -85,12 +92,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Arma3Api.cs" />
     <Compile Include="Arma3Configs.xaml.cs">
       <DependentUpon>Arma3Configs.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Arma3Link.cs" />
-    <Compile Include="Arma3Manager.cs" />
+    <Compile Include="Arma3\Manager.cs" />
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -117,7 +122,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="ModList.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -128,6 +132,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

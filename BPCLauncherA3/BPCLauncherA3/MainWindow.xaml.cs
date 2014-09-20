@@ -16,6 +16,7 @@ using System.Runtime.InteropServices;
 using Microsoft.Win32;
 using MahApps.Metro.Controls;
 using System.Diagnostics;
+using BPCLauncherA3.Arma3;
 
 namespace BPCLauncherA3
 {
@@ -23,137 +24,31 @@ namespace BPCLauncherA3
     /// Logique d'interaction pour MainWindow.xaml
     /// </summary>
     public partial class MainWindow 
-
     {
 
-        private String userEmail = "";
-        private String userPassword = "";
-        private String userToken = "";
-        //
-        private Boolean isA3Connected = false;
-        private Boolean isServerConnected = false;
-        private Boolean isAuthentified = false;
-        //
-        private Boolean checkUptodateIncomming = false;
-        //
-        private String Arma3Path = "";
-
-        // 0 : not check
-        // 1 : need Authentification
-        // 2 : check incomming
-        // 4 : check all ok
-        // 5 : downloading maj
-        private int Uptodate = 0;
-        //
-        private Boolean arma3Running = false;
+        private Manager a3manager = null;
         //
         private Arma3Configs cfgwindow;
         private Boolean cfgwindow_open = false;
+        //TODO REFACTO :
+        private Boolean arma3Running = false;
+        private Boolean isAuthentified = false;
 
         public MainWindow()
         {
+            this.a3manager = new Manager();
             InitializeComponent();
-            
-            try
-            {
-                RegistryKey rk = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Wow6432Node\bohemia interactive\arma 3");
-                String test = (String)rk.GetValue("main");
-                this.Arma3Path = test + @"/arma3.exe";
-            }
-            catch (Exception e)
-            {
-                Console.Write(e.ToString());
-            }
         }
         
         private void title_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
         }
-
-        //-- Setter Logique
-        public void setUptodate(int set)
-        {
-            switch (set)
-            {
-                case 0:
-                    this.Uptodate = 0;
-                    this.Launcher_Label_Uptodate.Content = "Uptodate : non vérifier";
-                    break;
-                case 1:
-                    this.Uptodate = 1;
-                    this.Launcher_Label_Uptodate.Content = "Uptodate : need Authentification";
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-            }
-        }
-
         //-- CallBack des Fenêtres
 
         public void CallBack_Close_Arma3Configs(){
             this.cfgwindow_open = false;
             this.cfgwindow = null;
-        }
-
-        public void CallBack_Authenticate_Login(String email, String password, String token)
-        {
-            this.userEmail = email;
-            this.userPassword = password;
-            this.userToken = token;
-            this.isAuthentified = true;
-            if (!this.arma3Running)
-            {
-                this.Button_Launch_ProjetX.IsEnabled = true;
-                this.Button_Launch_ProjetX.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("White"));
-                this.Button_Launch_ProjetX.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFF39B00"));
-            }
-        }
-
-        //-- Logique Allumage Arma
-
-        private void Launcher_StartA3(object sender, RoutedEventArgs e)
-        {
-            if (!this.arma3Running)
-            {
-                Console.WriteLine("XX- Lancement de Arma3 Vanilla");
-                this.Running_Arma3();
-            }
-            else
-            {
-                //Arma3 Alredy Running Force Closing and Start This or Abord
-            }
-        }
-
-        private void Launcher_StartA3_FrenchLife(object sender, RoutedEventArgs e)
-        {
-            if (!this.arma3Running)
-            {
-                Console.WriteLine("XX- Lancement de Arma3 FrenchLife");
-                this.Running_Arma3();
-            }
-            else
-            {
-                //Arma3 Alredy Running Force Closing and Start This or Abord
-            }
-        }
-
-        private void Launcher_StartA3_ProjetX(object sender, RoutedEventArgs e)
-        {
-            if (!this.arma3Running)
-            {
-                Console.WriteLine("XX- Lancement de Arma3 Projet X");
-                this.Running_Arma3();
-                
-            }
-            else
-            {
-                //Arma3 Alredy Running Force Closing and Start This or Abord
-            }
         }
 
         private void Launcher_StartLogin(object sender, RoutedEventArgs e)
@@ -175,30 +70,6 @@ namespace BPCLauncherA3
             this.Button_Launch_ProjetX.IsEnabled = false;
             this.Button_Launch_ProjetX.Foreground = SystemColors.ControlDarkBrush;
             this.Button_Launch_ProjetX.Background = SystemColors.ControlLightBrush;
-            this.Arma3_Start("");
-        }
-
-        private void Arma3_Start(String additionnalargument)
-        {
-            Console.Write(this.Arma3Path);
-            Process arma3 = new Process();
-            arma3.Exited += test;
-            Process.Start(this.Arma3Path);
-            
-            this.NotRunning_Arma3();
-        }
-
-        static void test(Object sender, EventArgs e)
-        {
-            Console.Write(" ??? EVENT END ... ");
-            Console.Write(" ??? EVENT END ... ");
-            Console.Write(" ??? EVENT END ... ");
-            Console.Write(" ??? EVENT END ... ");
-        }
-
-        public void NotRunning_Arma3(object sender, EventArgs e)
-        {
-            this.NotRunning_Arma3();
         }
 
         private void NotRunning_Arma3()
@@ -242,7 +113,7 @@ namespace BPCLauncherA3
             if (!this.cfgwindow_open)
             {
                 this.cfgwindow_open = true;
-                this.cfgwindow = new Arma3Configs(this);
+                this.cfgwindow = new Arma3Configs(this,this.a3manager);
                 this.cfgwindow.Show();
                 this.cfgwindow.Focus();
             }

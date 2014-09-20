@@ -35,9 +35,9 @@
             <Label x:Name="Launcher_Label_Uptodate" Foreground="White" Content="Update : All Ok" />
         </StatusBar>
         <Grid Margin="0,35">
-            <Button x:Name="Button_Launch_ProjetX" Content="Lancer Arma 3 - BPC Projet X" HorizontalAlignment="Left" Margin="10,263,0,0" VerticalAlignment="Top" Width="190" Click="Launcher_StartA3_ProjetX" IsEnabled="False" />
-            <Button x:Name="Button_Launch_FrenchLife" Content="Lancer Arma 3 - French Life" HorizontalAlignment="Left" Margin="205,263,0,0" VerticalAlignment="Top" Width="195" Click="Launcher_StartA3_FrenchLife" Background="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" Foreground="White"/>
-            <Button x:Name="Button_Launch_Arma3" Content="Lancer Arma 3 (vanilla)" HorizontalAlignment="Left" Margin="405,263,0,0" VerticalAlignment="Top" Width="160" Click="Launcher_StartA3" IsEnabled="true" Background="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Foreground="White"/>
+            <Button x:Name="Button_Launch_ProjetX" Content="Lancer Arma 3 - BPC Projet X" HorizontalAlignment="Left" Margin="10,263,0,0" VerticalAlignment="Top" Width="190" IsEnabled="False" />
+            <Button x:Name="Button_Launch_FrenchLife" Content="Lancer Arma 3 - French Life" HorizontalAlignment="Left" Margin="205,263,0,0" VerticalAlignment="Top" Width="195" Background="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" Foreground="White"/>
+            <Button x:Name="Button_Launch_Arma3" Content="Lancer Arma 3 (vanilla)" HorizontalAlignment="Left" Margin="405,263,0,0" VerticalAlignment="Top" Width="160" IsEnabled="true" Background="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Foreground="White"/>
         </Grid>
     </Grid>
 </Controls:MetroWindow>
