@@ -71,10 +71,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Arma3\Api.cs" />
+    <Compile Include="Arma3\ExeWorker.cs" />
     <Compile Include="Arma3\Link.cs" />
     <Compile Include="BPC\Api.cs" />
     <Compile Include="BPC\Authentification.cs" />
     <Compile Include="BPC\Link.cs" />
+    <Compile Include="Tools\ModsList.cs" />
     <Compile Include="Tools\Userconfigs.cs" />
     <Page Include="Arma3Configs.xaml">
       <SubType>Designer</SubType>

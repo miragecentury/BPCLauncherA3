@@ -78,5 +78,6 @@ namespace BPCLauncherA3
                 Console.WriteLine("Error writing app settings");
             }
         }
+
     }
 }

@@ -36,7 +36,7 @@ namespace BPCLauncherA3
 
         public MainWindow()
         {
-            this.a3manager = new Manager();
+            this.a3manager = new Manager(this);
             InitializeComponent();
         }
         
@@ -58,7 +58,7 @@ namespace BPCLauncherA3
             loginWindow.Show();
         }
 
-        private void Running_Arma3()
+        public void Running_Arma3()
         {
             this.arma3Running = true;
             this.Button_Launch_Arma3.IsEnabled = false;
@@ -72,7 +72,7 @@ namespace BPCLauncherA3
             this.Button_Launch_ProjetX.Background = SystemColors.ControlLightBrush;
         }
 
-        private void NotRunning_Arma3()
+        public void NotRunning_Arma3()
         {
             this.arma3Running = false;
             this.Button_Launch_Arma3.IsEnabled = true;
@@ -122,6 +122,11 @@ namespace BPCLauncherA3
                 this.cfgwindow.Show();
                 this.cfgwindow.Focus();
             }
+        }
+
+        private void LaunchArma3Vanilla(object sender, RoutedEventArgs e)
+        {
+            this.a3manager.LaunchArma3Vanilla();
         }
 
         //-- Logique de Mise à jour
