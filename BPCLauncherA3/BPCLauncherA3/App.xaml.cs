@@ -15,7 +15,7 @@ namespace BPCLauncherA3
     {
         public App()
         {
-            
+           
         }
 
         static void ReadAllSettings()

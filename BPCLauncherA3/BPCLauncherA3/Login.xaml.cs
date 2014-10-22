@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls;
+using BPCLauncherA3.Wamp;
 
 namespace BPCLauncherA3
 {
@@ -26,6 +27,7 @@ namespace BPCLauncherA3
         {
             this.main = mw;
             InitializeComponent();
+            new Client();
         }
 
         private void Login_Abord(object sender, RoutedEventArgs e)
