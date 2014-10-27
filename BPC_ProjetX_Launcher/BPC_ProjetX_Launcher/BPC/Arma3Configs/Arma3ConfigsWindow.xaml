@@ -1,0 +1,8 @@
+﻿<Window x:Class="BPC_ProjetX_Launcher.BPC.Arma3Configs.Arma3ConfigsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Arma3ConfigsWindow" Height="300" Width="300">
+    <Grid>
+        
+    </Grid>
+</Window>
