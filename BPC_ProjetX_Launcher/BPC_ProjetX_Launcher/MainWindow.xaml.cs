@@ -24,13 +24,20 @@ namespace BPC_ProjetX_Launcher
         public MainWindow()
         {
             InitializeComponent();
+            this.setStatusServerStatus(false);
+            this.setStatusServerConnectionStatus(false);
+            this.setStatusServeurAuthentification(false);
+            this.setStatusGameLinkConnection(false);
+            this.setStatusModsCheck(false);
         }
 
         public void setStatusServerStatus(bool status){
             if(status){
                 this.MainWindow_Status_ServeurStatus.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Green"));
+                this.MainWindow_Status_ServeurStatus_Rct.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Green"));
             }else{
                 this.MainWindow_Status_ServeurStatus.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Red"));
+                this.MainWindow_Status_ServeurStatus_Rct.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Red"));
             }
         }
 
@@ -39,10 +46,12 @@ namespace BPC_ProjetX_Launcher
             if (status)
             {
                 this.MainWindow_Status_ServeurConnectionStatus.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Green"));
+                this.MainWindow_Status_ServeurConnectionStatus_Rct.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Green"));
             }
             else
             {
                 this.MainWindow_Status_ServeurConnectionStatus.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Red"));
+                this.MainWindow_Status_ServeurConnectionStatus_Rct.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Red"));
             }
         }
 
@@ -51,10 +60,12 @@ namespace BPC_ProjetX_Launcher
             if (status)
             {
                 this.MainWindow_Status_ServeurAuthentification.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Green"));
+                this.MainWindow_Status_ServeurAuthentification_Rct.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Green"));
             }
             else
             {
                 this.MainWindow_Status_ServeurAuthentification.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Red"));
+                this.MainWindow_Status_ServeurAuthentification_Rct.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Red"));
             }
         }
 
@@ -63,10 +74,26 @@ namespace BPC_ProjetX_Launcher
             if (status)
             {
                 this.MainWindow_Status_GameLinkConnection.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Green"));
+                this.MainWindow_Status_GameLinkConnection_Rct.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Green"));
             }
             else
             {
                 this.MainWindow_Status_GameLinkConnection.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Red"));
+                this.MainWindow_Status_GameLinkConnection_Rct.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Red"));
+            }
+        }
+
+        public void setStatusModsCheck(bool status)
+        {
+            if (status)
+            {
+                this.MainWindow_Status_ModsCheck.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Green"));
+                this.MainWindow_Status_ModsCheck_Rct.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Green"));
+            }
+            else
+            {
+                this.MainWindow_Status_ModsCheck.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Red"));
+                this.MainWindow_Status_ModsCheck_Rct.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Red"));
             }
         }
     }
