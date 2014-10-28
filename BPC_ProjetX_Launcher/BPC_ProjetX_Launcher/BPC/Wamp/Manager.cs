@@ -8,5 +8,10 @@ namespace BPC_ProjetX_Launcher.BPC.Wamp
 {
     class Manager
     {
+        Boolean ServeurStatus = false;
+        Boolean ServeurIsConnected = false;
+        Boolean ServeurIsAuthentified = false;
+        
+
     }
 }
