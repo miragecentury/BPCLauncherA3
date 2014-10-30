@@ -38,6 +38,7 @@
       <HintPath>..\packages\MahApps.Metro.0.14.0.0\lib\net45\MahApps.Metro.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.0.14.0.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
@@ -49,6 +50,9 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Westwind.Utilities.Configuration">
+      <HintPath>..\packages\Westwind.Utilities.Configuration.2.25\lib\net40\Westwind.Utilities.Configuration.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
@@ -79,6 +83,7 @@
       <DependentUpon>Arma3ConfigsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="BPC\Arma3Configs\Manager.cs" />
+    <Compile Include="BPC\Arma3Configs\UserConfig.cs" />
     <Compile Include="BPC\Arma3\Instance.cs" />
     <Compile Include="BPC\Arma3\Manager.cs" />
     <Compile Include="BPC\Common\Login.xaml.cs">

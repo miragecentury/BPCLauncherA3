@@ -9,14 +9,17 @@ namespace BPC_ProjetX_Launcher.BPC.Common
     class Manager
     {
         bool serverStatus = false;
-        BPC.Wamp.Manager wampManager;
-        MainWindow mainWindow;
+        BPC.Wamp.Manager wampManager = null;
+        BPC.Arma3Configs.Manager configManager = null;
+        MainWindow mainWindow = null;
+
 
         public Manager(MainWindow mainWindow)
         {
             String errorMessage = "";
             this.mainWindow = mainWindow;
             errorMessage = this.CheckServerStatut();
+            this.configManager = new Arma3Configs.Manager();
             if (this.serverStatus == true)
             {
                 this.wampManager = new BPC.Wamp.Manager();

@@ -40,3 +40,5 @@ C:\Users\Zeus\Documents\GitHub\BPCLauncherA3\BPC_ProjetX_Launcher\BPC_ProjetX_La
 C:\Users\Zeus\Documents\GitHub\BPCLauncherA3\BPC_ProjetX_Launcher\BPC_ProjetX_Launcher\obj\Debug\BPC_ProjetX_Launcher.g.resources
 C:\Users\Zeus\Documents\GitHub\BPCLauncherA3\BPC_ProjetX_Launcher\BPC_ProjetX_Launcher\obj\Debug\BPC_ProjetX_Launcher.Properties.Resources.resources
 C:\Users\Zeus\Documents\GitHub\BPCLauncherA3\BPC_ProjetX_Launcher\BPC_ProjetX_Launcher\obj\Debug\BPC_ProjetX_Launcher.csproj.GenerateResource.Cache
+E:\Documents\GitHub\BPCLauncherA3\BPC_ProjetX_Launcher\BPC_ProjetX_Launcher\bin\Debug\Westwind.Utilities.Configuration.dll
+E:\Documents\GitHub\BPCLauncherA3\BPC_ProjetX_Launcher\BPC_ProjetX_Launcher\bin\Debug\Westwind.Utilities.Configuration.xml
