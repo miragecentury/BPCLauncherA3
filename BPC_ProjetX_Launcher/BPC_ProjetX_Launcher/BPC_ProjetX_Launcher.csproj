@@ -120,6 +120,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="BPC\Arma3Link\" />
     <Folder Include="BPC\Arma3Mods\" />
     <Folder Include="BPC\Wamp\Topic\" />
   </ItemGroup>

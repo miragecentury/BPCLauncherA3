@@ -2,35 +2,61 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-        Title="BPC - ProjetX Launcher - Version 0.0.1 - Revision XXXXXXXX" Background="#FF343434" Foreground="White" EnableDWMDropShadow="True">
+        Title="BPC - ProjetX Launcher - Version 0.0.1 - Revision XXXXXXXX" Background="#FF343434" Foreground="White" EnableDWMDropShadow="True"
+        ResizeMode="CanResizeWithGrip"
+
+        WindowTransitionsEnabled="False"
+        WindowStartupLocation="CenterScreen">                      
     <Grid>
-        <Grid VerticalAlignment="Top">
-            <Menu VerticalAlignment="Top" Height="30" Background="#FF343434">
-                <MenuItem Header="Authentification" Height="30" Background="#FF343434" Foreground="White">
-                    <MenuItem Header="Login" Background="#FF343434" IsEnabled="True"/>
-                    <MenuItem Header="Logout" Background="#FF343434" IsEnabled="False"/>
-                </MenuItem>
-            </Menu>
-            <Rectangle VerticalAlignment="Top" Margin="0,30,0,0" Height="1" Stroke="Gray"/>
-        </Grid>
-        <Grid VerticalAlignment="Bottom">
-            <StatusBar Height="30" HorizontalAlignment="Left"  Background="#FF343434" BorderBrush="White">
-                <Label x:Name="MainWindow_Status_ServeurStatus" Foreground="Red" Content="Serveur Status"/>
-                <Rectangle x:Name="MainWindow_Status_ServeurStatus_Rct" Margin="0,4,0,0" Fill="Red" HorizontalAlignment="Center" Height="20" Stroke="Tomato" VerticalAlignment="Center" Width="20"/>
-                <Separator Margin="0,10,0,5"/>
-                <Label x:Name="MainWindow_Status_ServeurConnectionStatus" Foreground="Red" Content="Serveur Not Connected"/>
-                <Rectangle x:Name="MainWindow_Status_ServeurConnectionStatus_Rct" Margin="0,4,0,0" Fill="Red" HorizontalAlignment="Center" Height="20" Stroke="Tomato" VerticalAlignment="Center" Width="20"/>
-                <Separator Margin="0,10,0,5"/>
-                <Label x:Name="MainWindow_Status_ServeurAuthentification" Foreground="Red" Content="Not Authentified"/>
-                <Rectangle x:Name="MainWindow_Status_ServeurAuthentification_Rct" Margin="0,4,0,0" Fill="Red" HorizontalAlignment="Center" Height="20" Stroke="Tomato" VerticalAlignment="Center" Width="20"/>
-                <Separator Margin="0,10,0,5"/>
-                <Label x:Name="MainWindow_Status_ModsCheck" Foreground="Red" Content="Check Mods"/>
-                <Rectangle x:Name="MainWindow_Status_ModsCheck_Rct" Margin="0,4,0,0" Fill="Red" HorizontalAlignment="Center" Height="20" Stroke="Tomato" VerticalAlignment="Center" Width="20"/>
-                <Separator Margin="0,10,0,5"/>
-                <Label x:Name="MainWindow_Status_GameLinkConnection" Foreground="Red" Content="Game Link Not Connected"/>
-                <Rectangle x:Name="MainWindow_Status_GameLinkConnection_Rct" Margin="0,4,0,0" Fill="Red" HorizontalAlignment="Center" Height="20" Stroke="Tomato" VerticalAlignment="Center" Width="20"/>
-                <Separator Margin="0,10,0,5"/>
-            </StatusBar>
-        </Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="57*"/>
+            <RowDefinition Height="32*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0" VerticalAlignment="Top" Height="30" Background="#FF343434" Grid.ColumnSpan="3">
+            <MenuItem Header="Authentification" Height="30" Background="#FF343434" Foreground="White">
+                <MenuItem x:Name="MainWindow_Menu_Login" Header="Login" Background="#FF343434" IsEnabled="True"/>
+                <MenuItem x:Name="MainWindow_Menu_Logout" Header="Logout" Background="#FF343434" IsEnabled="False"/>
+            </MenuItem>
+            <MenuItem x:Name="MainWindow_Menu_Debug" Header="Debug" Height="30" Background="#FF343434" HorizontalAlignment="Right" IsEnabled="False">
+                <MenuItem x:Name="MainWindow_Menu_Debug_LiveLog" Header="Live Log" Background="#FF343434" IsEnabled="False"/>
+                <MenuItem x:Name="MainWindow_Menu_Debug_LiveEvent" Header="Live Event" Background="#FF343434" IsEnabled="False"/>
+            </MenuItem>
+            <MenuItem Header="?" Height="30" Background="#FF343434" Foreground="White" HorizontalAlignment="Right">
+                <MenuItem Header="A Propos" Background="#FF343434" IsEnabled="True"/>
+                <MenuItem Header="Version" Background="#FF343434" IsEnabled="True"/>
+            </MenuItem>
+        </Menu>
+        <Rectangle VerticalAlignment="Top" Height="1" Stroke="Gray" Grid.Row="1" Grid.ColumnSpan="3"/>
+        <StatusBar HorizontalAlignment="Left"  Background="#FF343434" BorderBrush="White" Grid.Row="3" Grid.ColumnSpan="3" Width="708">
+            <Label x:Name="MainWindow_Status_ServeurStatus" Foreground="Red" Content="Serveur Status"/>
+            <Rectangle x:Name="MainWindow_Status_ServeurStatus_Rct" Margin="0,4,0,0" Fill="Red" HorizontalAlignment="Center" Height="20" Stroke="Tomato" VerticalAlignment="Center" Width="20"/>
+            <Separator Margin="0,10,0,5"/>
+            <Label x:Name="MainWindow_Status_ServeurConnectionStatus" Foreground="Red" Content="Serveur Not Connected"/>
+            <Rectangle x:Name="MainWindow_Status_ServeurConnectionStatus_Rct" Margin="0,4,0,0" Fill="Red" HorizontalAlignment="Center" Height="20" Stroke="Tomato" VerticalAlignment="Center" Width="20"/>
+            <Separator Margin="0,10,0,5"/>
+            <Label x:Name="MainWindow_Status_ServeurAuthentification" Foreground="Red" Content="Not Authentified"/>
+            <Rectangle x:Name="MainWindow_Status_ServeurAuthentification_Rct" Margin="0,4,0,0" Fill="Red" HorizontalAlignment="Center" Height="20" Stroke="Tomato" VerticalAlignment="Center" Width="20"/>
+            <Separator Margin="0,10,0,5"/>
+            <Label x:Name="MainWindow_Status_ModsCheck" Foreground="Red" Content="Check Mods"/>
+            <Rectangle x:Name="MainWindow_Status_ModsCheck_Rct" Margin="0,4,0,0" Fill="Red" HorizontalAlignment="Center" Height="20" Stroke="Tomato" VerticalAlignment="Center" Width="20"/>
+            <Separator Margin="0,10,0,5"/>
+            <Label x:Name="MainWindow_Status_GameLinkConnection" Foreground="Red" Content="Game Link Not Connected"/>
+            <Rectangle x:Name="MainWindow_Status_GameLinkConnection_Rct" Margin="0,4,0,0" Fill="Red" HorizontalAlignment="Center" Height="20" Stroke="Tomato" VerticalAlignment="Center" Width="20"/>
+            <Separator Margin="0,10,0,5"/>
+            <Label/>
+        </StatusBar>
+        <Controls:Tile x:Name="MainWindow_Tile_LaunchProjetX" Title="Démarre Arma3 est vous connecte sur ProjetX" TiltFactor="2" Content="Lancer ProjetX" Margin="1,1,1,1" Grid.Row="1" Width="Auto" Height="Auto"></Controls:Tile>
+        <Controls:Tile x:Name="MainWindow_Tile_OpenSite" Title="Ouvre le Site de ProjetX" TiltFactor="2" Content="Site: projetx.nordri.fr" Margin="1,1,1,1" Grid.Row="2" Width="Auto" Height="Auto" ></Controls:Tile>
+        <Controls:Tile x:Name="MainWindow_Tile_LaunchVanilla" Title="Démarre Arma3 Vanilla (sans Mods)" TiltFactor="2" Content="Lancer Arma3 Vanilla" Margin="1,1,1,1" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Width="Auto" Height="Auto" ></Controls:Tile>
+        <Controls:Tile x:Name="MainWindow_Tile_ModCheck" Title="Vérification des Mods Projetx" TiltFactor="2" Content="Check Mods ProjetX" Margin="1,1,1,1" Grid.Row="2" Grid.Column="1" Width="Auto" Height="Auto"></Controls:Tile>
+        <Controls:Tile x:Name="MainWindow_Tile_Arma3Settings" Title="Définir les Options de Lancement de Arma3" TiltFactor="2" Content="Arma3 Settings" Margin="1,1,1,1" Grid.Row="2" Grid.Column="2" Width="Auto" Height="Auto"></Controls:Tile>
     </Grid>
 </Controls:MetroWindow>

@@ -24,6 +24,12 @@ namespace BPC_ProjetX_Launcher
         public MainWindow()
         {
             InitializeComponent();
+            this.Initialisation();
+        }
+
+        private void Initialisation(){
+            this.setEnableTileLaunchProjetX(false);
+            this.setEnableTileModCheck(false);
             this.setStatusServerStatus(false);
             this.setStatusServerConnectionStatus(false);
             this.setStatusServeurAuthentification(false);
@@ -38,6 +44,10 @@ namespace BPC_ProjetX_Launcher
             }else{
                 this.MainWindow_Status_ServeurStatus.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Red"));
                 this.MainWindow_Status_ServeurStatus_Rct.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Red"));
+                this.setEnableTileModCheck(false);
+                this.setEnableTileLaunchProjetX(false);
+                this.setStatusServerConnectionStatus(false);
+                this.setStatusServeurAuthentification(false);
             }
         }
 
@@ -47,11 +57,16 @@ namespace BPC_ProjetX_Launcher
             {
                 this.MainWindow_Status_ServeurConnectionStatus.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Green"));
                 this.MainWindow_Status_ServeurConnectionStatus_Rct.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Green"));
+                this.MainWindow_Status_ServeurConnectionStatus.Content = "Connected";
             }
             else
             {
                 this.MainWindow_Status_ServeurConnectionStatus.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Red"));
                 this.MainWindow_Status_ServeurConnectionStatus_Rct.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Red"));
+                this.setEnableTileModCheck(false);
+                this.setEnableTileLaunchProjetX(false);
+                this.setStatusServeurAuthentification(false);
+                this.MainWindow_Status_ServeurConnectionStatus.Content = "Not Connected";
             }
         }
 
@@ -61,11 +76,21 @@ namespace BPC_ProjetX_Launcher
             {
                 this.MainWindow_Status_ServeurAuthentification.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Green"));
                 this.MainWindow_Status_ServeurAuthentification_Rct.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Green"));
+                this.MainWindow_Status_ServeurAuthentification.Content = "Authentifed";
+                this.setEnableTileModCheck(true);
+                this.setEnableTileLaunchProjetX(true);
+                this.MainWindow_Menu_Login.IsEnabled = false;
+                this.MainWindow_Menu_Logout.IsEnabled = true;
             }
             else
             {
                 this.MainWindow_Status_ServeurAuthentification.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Red"));
                 this.MainWindow_Status_ServeurAuthentification_Rct.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Red"));
+                this.MainWindow_Status_ServeurAuthentification.Content = "Not Authentifed";
+                this.setEnableTileModCheck(false);
+                this.setEnableTileLaunchProjetX(false);
+                this.MainWindow_Menu_Login.IsEnabled = true;
+                this.MainWindow_Menu_Logout.IsEnabled = false;
             }
         }
 
@@ -94,6 +119,102 @@ namespace BPC_ProjetX_Launcher
             {
                 this.MainWindow_Status_ModsCheck.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Red"));
                 this.MainWindow_Status_ModsCheck_Rct.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Red"));
+            }
+        }
+
+        public void setEnableTileLaunchProjetX(bool enable)
+        {
+            this.MainWindow_Tile_LaunchProjetX.IsEnabled = enable;
+            if (enable == true)
+            {
+                this.MainWindow_Tile_LaunchProjetX.Opacity = 1.0;
+            }
+            else
+            {
+                this.MainWindow_Tile_LaunchProjetX.Opacity = 0.4;
+            }
+        }
+
+        public void setEnableTileLaunchVanilla(bool enable)
+        {
+            this.MainWindow_Tile_LaunchVanilla.IsEnabled = enable;
+            if (enable == true)
+            {
+                this.MainWindow_Tile_LaunchVanilla.Opacity = 1.0;
+            }
+            else
+            {
+                this.MainWindow_Tile_LaunchVanilla.Opacity = 0.4;
+            }
+        }
+
+        public void setEnableTileOpenSite(bool enable)
+        {
+            this.MainWindow_Tile_OpenSite.IsEnabled = enable;
+            if (enable == true)
+            {
+                this.MainWindow_Tile_OpenSite.Opacity = 1.0;
+            }
+            else
+            {
+                this.MainWindow_Tile_OpenSite.Opacity = 0.4;
+            }
+        }
+
+        public void setEnableTileModCheck(bool enable)
+        {
+            this.MainWindow_Tile_ModCheck.IsEnabled = enable;
+            if (enable == true)
+            {
+                this.MainWindow_Tile_ModCheck.Opacity = 1.0;
+            }
+            else
+            {
+                this.MainWindow_Tile_ModCheck.Opacity = 0.4;
+            }
+        }
+
+        public void setEnableTileArma3Settings(bool enable)
+        {
+            this.MainWindow_Tile_Arma3Settings.IsEnabled = enable;
+            if (enable == true)
+            {
+                this.MainWindow_Tile_Arma3Settings.Opacity = 1.0;
+            }
+            else
+            {
+                this.MainWindow_Tile_Arma3Settings.Opacity = 0.4;
+            }
+        }
+
+        public void setEnableMenuDebug(bool enable)
+        {
+            this.MainWindow_Menu_Debug.IsEnabled = enable;
+            if (enable)
+            {
+                this.MainWindow_Menu_Debug.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("White"));
+            }
+            else
+            {
+                this.MainWindow_Menu_Debug.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Auto"));
+            }
+        }
+
+        public void setEnableMenuDebugLiveLog(bool enable)
+        {
+            this.MainWindow_Menu_Debug_LiveLog.IsEnabled = enable;
+            if (enable)
+            {
+                this.setEnableMenuDebug(true);
+            }
+        }
+
+        public void setEnableMenuDebugLiveEvent(bool enable)
+        {
+            this.MainWindow_Menu_Debug_LiveEvent.IsEnabled = enable;
+            if (enable)
+            {
+                this.setEnableMenuDebug(true);
             }
         }
     }
