@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BPC_ProjetX_Launcher.BPC.Arma3Configs
 {
-    class Manager
+    public class Manager
     {
 
         Userconfig userConfig = null;

@@ -21,7 +21,7 @@
 
         <Menu Grid.Row="0" VerticalAlignment="Top" Height="30" Background="#FF343434" Grid.ColumnSpan="3">
             <MenuItem Header="Authentification" Height="30" Background="#FF343434" Foreground="White">
-                <MenuItem x:Name="MainWindow_Menu_Login" Header="Login" Background="#FF343434" IsEnabled="True"/>
+                <MenuItem x:Name="MainWindow_Menu_Login" Header="Login" Background="#FF343434" IsEnabled="True" Click="MainWindow_Menu_Login_Click"/>
                 <MenuItem x:Name="MainWindow_Menu_Logout" Header="Logout" Background="#FF343434" IsEnabled="False"/>
             </MenuItem>
             <MenuItem x:Name="MainWindow_Menu_Debug" Header="Debug" Height="30" Background="#FF343434" HorizontalAlignment="Right" IsEnabled="False">

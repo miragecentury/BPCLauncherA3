@@ -7,7 +7,7 @@ using Westwind.Utilities.Configuration;
 
 namespace BPC_ProjetX_Launcher.BPC.Arma3Configs
 {
-    class Userconfig : AppConfiguration
+    public class Userconfig : AppConfiguration
     {
         public Boolean arma3Config_noStartScreen { get; set; }
         public Boolean arma3Config_noPause { get; set; }

@@ -5,10 +5,14 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Helpers;
+using System.Dynamic;
+using System.Web.Script.Serialization;
+using BPC.Common;
 
 namespace BPC_ProjetX_Launcher.BPC.Common
 {
-    class Manager
+    public class Manager
     {
         bool serverStatus = false;
         BPC.Wamp.Manager wampManager = null;
@@ -17,7 +21,7 @@ namespace BPC_ProjetX_Launcher.BPC.Common
         MainWindow mainWindow = null;
         static Manager singleton = null;
 
-        const String urlToCheckStatus = "http://projetx.nordri.fr/api/v1/launcher/getStatus";
+        const String urlToCheckStatus = "http://projetx.nordri.fr/api/launcher/statut";
 
         static public Manager getInstance()
         {
@@ -27,8 +31,7 @@ namespace BPC_ProjetX_Launcher.BPC.Common
         public Manager()
         {
             Manager.singleton = this;
-            String errorMessage = "";
-            errorMessage = this.CheckServerStatut();
+            this.CheckServerStatut();
             this.configManager = new Arma3Configs.Manager();
             this.arma3Manager = new BPC.Arma3.Manager(this.configManager);
             if (this.serverStatus == true)
@@ -46,6 +49,23 @@ namespace BPC_ProjetX_Launcher.BPC.Common
         public void setMainWindow(MainWindow mw)
         {
             this.mainWindow = mw;
+            if (this.serverStatus)
+            {
+                this.mainWindow.setStatusServerStatus(true);
+                this.wampManager.Connect();
+                if (this.wampManager.IsConnected())
+                {
+                    this.mainWindow.setStatusServerConnectionStatus(true);
+                    this.StartLogin();
+                }
+            }
+        }
+
+        public void StartLogin()
+        {
+            Login lgWindow = new Login(this);
+            lgWindow.Show();
+            this.mainWindow.Hide();
         }
 
         public MainWindow getMainWindow()
@@ -58,7 +78,7 @@ namespace BPC_ProjetX_Launcher.BPC.Common
             return this.configManager;
         }
 
-        private String CheckServerStatut(){
+        private void CheckServerStatut(){
             this.serverStatus = false;
             try
             {
@@ -66,20 +86,31 @@ namespace BPC_ProjetX_Launcher.BPC.Common
                 {
 
                     byte[] response =
-                    client.UploadValues("http://projetx.nordri.fr/api/v1/updater/getinfos", new NameValueCollection()
+                    client.UploadValues(Manager.urlToCheckStatus, new NameValueCollection()
                 {
                     { "pass", "" }
                 });
 
                     string result = System.Text.Encoding.UTF8.GetString(response);
+                    var serializer = new JavaScriptSerializer();
+                    serializer.RegisterConverters(new[] { new DynamicJsonConverter() });
+
+                    dynamic obj = serializer.Deserialize(result, typeof(object));
+                    Console.WriteLine(obj);
+                    Console.WriteLine(obj.ok);
+                    if (obj.ok == true)
+                    {
+                        this.serverStatus = true;
+                    }
                 }
             }
             catch (Exception e)
             {
+                Console.WriteLine(e.Message);
                 this.serverStatus = false;
-                return "Impossible de Vérifier l'état du Serveur. Veuillez nous excuser du désagremment.";
+                //return "Impossible de Vérifier l'état du Serveur. Veuillez nous excuser du désagremment.";
             }
-            return "";
+           
         }
 
         public void StartArma3Vanilla()
@@ -87,5 +118,19 @@ namespace BPC_ProjetX_Launcher.BPC.Common
             this.arma3Manager.startArma3Vanilla();
         }
 
+        public Boolean Authenticate(String email, String password)
+        {
+            if (this.wampManager.Authenticate(email, password))
+            {
+                //OK
+                this.mainWindow.setStatusServeurAuthentification(true);
+                return true;
+            }
+            else
+            {
+                //PAS OK
+                return false;
+            }
+        }
     }
 }

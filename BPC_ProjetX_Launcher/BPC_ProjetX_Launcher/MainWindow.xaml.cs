@@ -23,9 +23,9 @@ namespace BPC_ProjetX_Launcher
     {
         public MainWindow()
         {
-            BPC.Common.Manager.getInstance().setMainWindow(this);
             InitializeComponent();
-            this.Initialisation();     
+            this.Initialisation();
+            BPC.Common.Manager.getInstance().setMainWindow(this);
         }
 
         private void Initialisation(){
@@ -244,6 +244,11 @@ namespace BPC_ProjetX_Launcher
         {
             BPC.Arma3Configs.Arma3ConfigsWindow cfgWindow = new BPC.Arma3Configs.Arma3ConfigsWindow();
             cfgWindow.Show();
+        }
+
+        private void MainWindow_Menu_Login_Click(object sender, RoutedEventArgs e)
+        {
+            BPC.Common.Manager.getInstance().StartLogin();
         }
     }
 }

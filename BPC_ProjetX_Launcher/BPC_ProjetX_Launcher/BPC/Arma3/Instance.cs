@@ -73,7 +73,6 @@ namespace BPC_ProjetX_Launcher.BPC.Arma3
             }
 
             return args;
-            return "";
         }
 
         public String compileConfigMods()

@@ -20,9 +20,31 @@ namespace BPC_ProjetX_Launcher.BPC.Common
     /// </summary>
     public partial class Login : MetroWindow
     {
-        public Login()
+        Manager manager = null;
+
+        public Login(Manager manager)
         {
-           
+            this.manager = manager;
+            InitializeComponent();
+        }
+
+        private void Login_Button_Authentification_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.manager.Authenticate(this.Login_TextBox_Email.Text, this.Login_PasswordBox_Password.Password))
+            {
+                this.manager.getMainWindow().Show();
+                this.Close();
+            }
+            else
+            {
+                //TODO MESSAGE
+            }
+        }
+
+        private void Login_Button_Annuler_Click(object sender, RoutedEventArgs e)
+        {
+            this.manager.getMainWindow().Show();
+            this.Close();
         }
     }
 }
