@@ -13,6 +13,10 @@ namespace BPC_ProjetX_Launcher
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            new BPC.Common.Manager();
+        }
 
         static void ReadAllSettings()
         {

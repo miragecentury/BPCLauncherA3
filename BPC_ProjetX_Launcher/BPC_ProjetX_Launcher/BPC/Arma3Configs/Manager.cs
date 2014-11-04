@@ -16,7 +16,11 @@ namespace BPC_ProjetX_Launcher.BPC.Arma3Configs
             this.userConfig = new Userconfig();
             this.userConfig.Initialize();
             this.userConfig.Read();
-            this.userConfig.Write();
+        }
+
+        public Userconfig getUserConfig()
+        {
+            return this.userConfig;
         }
     }
 }

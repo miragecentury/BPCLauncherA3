@@ -23,8 +23,9 @@ namespace BPC_ProjetX_Launcher
     {
         public MainWindow()
         {
+            BPC.Common.Manager.getInstance().setMainWindow(this);
             InitializeComponent();
-            this.Initialisation();
+            this.Initialisation();     
         }
 
         private void Initialisation(){
@@ -216,6 +217,33 @@ namespace BPC_ProjetX_Launcher
             {
                 this.setEnableMenuDebug(true);
             }
+        }
+
+        public void setActivedTileLaunchVanilla(bool active)
+        {
+            this.MainWindow_Tile_LaunchVanilla.IsEnabled = !active;
+            if (active)
+            {
+                this.MainWindow_Tile_LaunchVanilla.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#CCECC61A"));
+                this.setEnableTileArma3Settings(false);
+            }
+            else
+            {
+                this.MainWindow_Tile_LaunchVanilla.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#CC119EDA"));
+                this.setEnableTileArma3Settings(true);
+            }
+            
+        }
+
+        private void MainWindow_Tile_LaunchVanilla_Click(object sender, RoutedEventArgs e)
+        {
+            BPC.Common.Manager.getInstance().StartArma3Vanilla();
+        }
+
+        private void MainWindow_Tile_Arma3Settings_Click(object sender, RoutedEventArgs e)
+        {
+            BPC.Arma3Configs.Arma3ConfigsWindow cfgWindow = new BPC.Arma3Configs.Arma3ConfigsWindow();
+            cfgWindow.Show();
         }
     }
 }
