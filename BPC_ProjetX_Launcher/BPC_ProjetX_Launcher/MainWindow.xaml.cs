@@ -222,15 +222,21 @@ namespace BPC_ProjetX_Launcher
         public void setActivedTileLaunchVanilla(bool active)
         {
             this.MainWindow_Tile_LaunchVanilla.IsEnabled = !active;
+            this.MainWindow_Tile_LaunchProjetX.IsEnabled = !active;
+            this.MainWindow_Tile_ModCheck.IsEnabled = !active;
             if (active)
             {
                 this.MainWindow_Tile_LaunchVanilla.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#CCECC61A"));
                 this.setEnableTileArma3Settings(false);
+                this.setEnableTileLaunchProjetX(false);
+                this.setEnableTileModCheck(false);
             }
             else
             {
                 this.MainWindow_Tile_LaunchVanilla.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#CC119EDA"));
                 this.setEnableTileArma3Settings(true);
+                this.setEnableTileLaunchProjetX(true);
+                this.setEnableTileModCheck(true);
             }
             
         }
@@ -249,6 +255,11 @@ namespace BPC_ProjetX_Launcher
         private void MainWindow_Menu_Login_Click(object sender, RoutedEventArgs e)
         {
             BPC.Common.Manager.getInstance().StartLogin();
+        }
+
+        private void MetroWindow_Closed(object sender, EventArgs e)
+        {
+            BPC.Common.Manager.getInstance().Close();
         }
     }
 }

@@ -132,5 +132,13 @@ namespace BPC_ProjetX_Launcher.BPC.Common
                 return false;
             }
         }
+
+        public void Close()
+        {
+            if (this.wampManager != null)
+            {
+                this.wampManager.Disconnect();
+            }
+        }
     }
 }

@@ -31,7 +31,7 @@ namespace BPC_ProjetX_Launcher.BPC.Wamp
         public void Connect()
         {
             DefaultWampChannelFactory channelFactory = new DefaultWampChannelFactory();
-            serverws = channelFactory.CreateChannel(Manager.wsUrl);
+            this.serverws = channelFactory.CreateChannel(Manager.wsUrl);
             try
             {
                 serverws.Open();
@@ -42,6 +42,12 @@ namespace BPC_ProjetX_Launcher.BPC.Wamp
                 Console.WriteLine(e.Message);
                 this.ServeurIsConnected = false;
             }
+        }
+
+        public void Disconnect()
+        {
+            //TODO : Send Close for unset Token
+            this.serverws.Close();
         }
 
         public Boolean Authenticate(String email, String Password)

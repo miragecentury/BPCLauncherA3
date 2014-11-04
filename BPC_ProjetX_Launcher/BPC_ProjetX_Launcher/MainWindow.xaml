@@ -5,7 +5,7 @@
         Title="BPC - ProjetX Launcher - Version 0.0.1 - Revision XXXXXXXX" Background="#FF343434" Foreground="White" EnableDWMDropShadow="True"
         ResizeMode="CanResizeWithGrip"
         WindowTransitionsEnabled="False"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen" Closed="MetroWindow_Closed">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
