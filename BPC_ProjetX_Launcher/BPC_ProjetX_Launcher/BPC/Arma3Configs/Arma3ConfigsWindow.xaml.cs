@@ -43,7 +43,16 @@ namespace BPC_ProjetX_Launcher.BPC.Arma3Configs
             this.setNoPause(this.userConfig.arma3Config_noPause);
             this.setNoScreen(this.userConfig.arma3Config_noStartScreen);
             //Système
-            
+            this.setExThread(this.userConfig.arma3Config_extraThread, this.userConfig.arma3Config_extraThread_index);
+            this.setHyperThreading(this.userConfig.arma3Config_hyperThreading);
+            this.setNoMultiCore(this.userConfig.arma3Config_stopMultiCore);
+        }
+
+        public void setExThread(int val,int index)
+        {
+            this.Arma3ConfigWindow_ComboBox_ExtraThread.SelectedIndex = index;
+            this.userConfig.arma3Config_extraThread = val;
+            this.userConfig.arma3Config_extraThread_index = index;
         }
 
         public void setEmptyWorld(Boolean active)
@@ -171,9 +180,32 @@ namespace BPC_ProjetX_Launcher.BPC.Arma3Configs
             this.setNoLog(true);
         }
 
+        private void Arma3ConfigWindow_ComboBox_ExtraThread_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem it = (ComboBoxItem) e.AddedItems[0];
+            int val = int.Parse(it.Content.ToString());
+            ComboBox se = (ComboBox) sender;
+            this.setExThread(val,se.SelectedIndex);
+        }
 
+        private void Arma3ConfigWindow_CheckBox_NoMultiCore_Checked(object sender, RoutedEventArgs e)
+        {
+            this.setNoMultiCore(true);
+        }
 
+        private void Arma3ConfigWindow_CheckBox_NoMultiCore_UnChecked(object sender, RoutedEventArgs e)
+        {
+            this.setNoMultiCore(false);
+        }
 
+        private void Arma3ConfigWindow_CheckBox_HyperThreading_Checked(object sender, RoutedEventArgs e)
+        {
+            this.setHyperThreading(true);
+        }
 
+        private void Arma3ConfigWindow_CheckBox_HyperThreading_UnChecked(object sender, RoutedEventArgs e)
+        {
+            this.setHyperThreading(false);
+        }
     }
 }

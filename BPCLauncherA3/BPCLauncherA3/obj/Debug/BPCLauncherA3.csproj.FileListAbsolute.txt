@@ -44,7 +44,6 @@ C:\Users\Zeus\Documents\GitHub\BPCLauncherA3\BPCLauncherA3\BPCLauncherA3\obj\Deb
 C:\Users\Zeus\Documents\GitHub\BPCLauncherA3\BPCLauncherA3\BPCLauncherA3\obj\Debug\BPCLauncherA3.csproj.GenerateResource.Cache
 E:\Documents\GitHub\BPCLauncherA3\BPCLauncherA3\BPCLauncherA3\bin\Debug\Westwind.Utilities.Configuration.dll
 E:\Documents\GitHub\BPCLauncherA3\BPCLauncherA3\BPCLauncherA3\bin\Debug\Westwind.Utilities.Configuration.xml
-C:\Users\Zeus\Documents\GitHub\BPCLauncherA3\BPCLauncherA3\BPCLauncherA3\bin\Debug\Westwind.Utilities.Configuration.dll
 C:\Users\Zeus\Documents\GitHub\BPCLauncherA3\BPCLauncherA3\BPCLauncherA3\bin\Debug\Westwind.Utilities.Configuration.xml
 C:\Users\Zeus\Documents\GitHub\BPCLauncherA3\BPCLauncherA3\BPCLauncherA3\bin\Debug\Castle.Core.dll
 C:\Users\Zeus\Documents\GitHub\BPCLauncherA3\BPCLauncherA3\BPCLauncherA3\bin\Debug\Fleck.dll

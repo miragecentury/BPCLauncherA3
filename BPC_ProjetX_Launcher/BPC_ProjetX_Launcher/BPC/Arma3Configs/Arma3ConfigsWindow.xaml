@@ -58,9 +58,9 @@
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
-                <CheckBox x:Name="Arma3ConfigWindow_CheckBox_NoMultiCore" Content="Arrêt de Gestion MultiCore (-noCB)" Margin="5,5,5,5" Foreground="White" Grid.Row="0" Grid.ColumnSpan="2"/>
-                <CheckBox x:Name="Arma3ConfigWindow_CheckBox_HyperThreading" Content="Hyper Threading" Margin="5,5,5,5" Foreground="White" Grid.Row="1" Grid.ColumnSpan="2"/>
-                <CheckBox x:Name="Arma3ConfigWindow_CheckBox_SetNbCpu" Content="Nombre de Processeurs" Margin="5,5,5,5" Foreground="White" Grid.Row="2" Grid.ColumnSpan="2"/>
+                <CheckBox x:Name="Arma3ConfigWindow_CheckBox_NoMultiCore" Content="Arrêt de Gestion MultiCore (-noCB)" Margin="5,5,5,5" Foreground="White" Grid.Row="0" Grid.ColumnSpan="2" Checked="Arma3ConfigWindow_CheckBox_NoMultiCore_Checked" Unchecked="Arma3ConfigWindow_CheckBox_NoMultiCore_UnChecked"/>
+                <CheckBox x:Name="Arma3ConfigWindow_CheckBox_HyperThreading" Content="Hyper Threading" Margin="5,5,5,5" Foreground="White" Grid.Row="1" Grid.ColumnSpan="2" Checked="Arma3ConfigWindow_CheckBox_HyperThreading_Checked"/>
+                <CheckBox x:Name="Arma3ConfigWindow_CheckBox_SetNbCpu" Content="Nombre de Processeurs" Margin="5,5,5,5" Foreground="White" Grid.Row="2" Grid.ColumnSpan="2" Unchecked="Arma3ConfigWindow_CheckBox_HyperThreading_UnChecked"/>
                 <Slider x:Name="Arma3ConfigWindow_Slider_SetNbCpu" Margin="5,5,5,5" Grid.Row="3" Grid.Column="1"/>
                 <TextBox x:Name="Arma3ConfigWindow_TextBox_SetNbCpu" Margin="5,5,5,5" Grid.Row="3" TextWrapping="Wrap" Text="" Height="25"/>
                 <CheckBox x:Name="Arma3ConfigWindow_CheckBox_SetMaxMem" Content="Mémoire Max (MB)" Margin="5,5,5,5" Foreground="White" Grid.Row="4" Grid.ColumnSpan="2"/>
@@ -69,7 +69,16 @@
                 <CheckBox x:Name="Arma3ConfigWindow_CheckBox_SetMaxVideoMem" Content="Mémoire Vidéo Max (MB)" Margin="5,5,5,5" Foreground="White" Grid.Row="6" Grid.ColumnSpan="2"/>
                 <Slider x:Name="Arma3ConfigWindow_Slider_SetMaxVideoMem" Margin="5,5,5,5" Grid.Row="7" Grid.Column="1"/>
                 <TextBox x:Name="Arma3ConfigWindow_TextBox_SetMaxVideoMem" Margin="5,5,5,5" Grid.Row="7" TextWrapping="Wrap" Text="" Height="25"/>
-                <ComboBox x:Name="Arma3ConfigWindow_ComboBox_ExtraThread" Margin="5,5,5,5" Grid.Row="8" Height="25" Grid.Column="1"/>
+                <ComboBox x:Name="Arma3ConfigWindow_ComboBox_ExtraThread" Margin="5,5,5,0" Grid.Row="8" Height="25" Grid.Column="1" SelectionChanged="Arma3ConfigWindow_ComboBox_ExtraThread_SelectionChanged">
+                    <ComboBoxItem HorizontalAlignment="Center" Content="0"/>
+                    <ComboBoxItem HorizontalAlignment="Center" Content="1"/>
+                    <ComboBoxItem HorizontalAlignment="Center" Content="2"/>
+                    <ComboBoxItem HorizontalAlignment="Center" Content="3"/>
+                    <ComboBoxItem HorizontalAlignment="Center" Content="4"/>
+                    <ComboBoxItem HorizontalAlignment="Center" Content="5"/>
+                    <ComboBoxItem HorizontalAlignment="Center" Content="6"/>
+                    <ComboBoxItem HorizontalAlignment="Center" Content="7"/>
+                </ComboBox>
                 <Label Content="Extra Thread :" Height="25" Margin="5,5,5,5" Grid.Row="8" Foreground="White" HorizontalAlignment="Center"/>
 
             </Grid>

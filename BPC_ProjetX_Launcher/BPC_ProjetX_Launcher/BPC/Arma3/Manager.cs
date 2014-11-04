@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using BPC_ProjetX_Launcher.BPC.Arma3Configs;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,12 +38,17 @@ namespace BPC_ProjetX_Launcher.BPC.Arma3
         public Boolean startArma3Vanilla()
         {
             if(this.arma3Instance == null){
-                this.arma3Instance = new Instance(this);
+                this.arma3Instance = new Instance(this,false);
                 this.arma3Instance.Launch();
                 return true;
             }else{
                 return false;
             }
+        }
+
+        public Userconfig getUserConfig()
+        {
+            return this.configManager.getUserConfig();
         }
 
         public Boolean startArma3ProjetX()

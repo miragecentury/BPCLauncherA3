@@ -16,8 +16,14 @@ namespace BPC_ProjetX_Launcher.BPC.Arma3Configs
         public Boolean arma3Config_stopMultiCore { get; set; }
         public Boolean arma3Config_onlyPbo { get; set; }
         public Boolean arma3Config_noLog { get; set; }
-        public UInt32 arma3Config_extraThread { get; set; }
+        public Int32 arma3Config_extraThread { get; set; }
+        public Int32 arma3Config_extraThread_index { get; set; }
         public Boolean arma3Config_hyperThreading { get; set; }
+        public Int32 arma3Config_maxmem { get; set; }
+        public Int32 arma3Config_maxvideomam { get; set; }
+        public Int32 arma3Config_nbproc { get; set; }
+        //
+        public DateTime updater_lastCheck { get; set; }
 
         public Userconfig()
         {
@@ -29,7 +35,10 @@ namespace BPC_ProjetX_Launcher.BPC.Arma3Configs
             this.arma3Config_onlyPbo = false;
             this.arma3Config_noLog = false;
             this.arma3Config_extraThread = 0;
+            this.arma3Config_extraThread_index = 0;
             this.arma3Config_hyperThreading = false;
+            //
+            this.updater_lastCheck = new DateTime();
         }
 
         protected override IConfigurationProvider OnCreateDefaultProvider(string sectionName, object configData)
