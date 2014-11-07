@@ -55,7 +55,7 @@
         <Controls:Tile x:Name="MainWindow_Tile_LaunchProjetX" Title="Démarre Arma3 est vous connecte sur ProjetX" TiltFactor="2" Content="Lancer ProjetX" Margin="1,1,1,1" Grid.Row="1" Width="Auto" Height="Auto"></Controls:Tile>
         <Controls:Tile x:Name="MainWindow_Tile_OpenSite" Title="Ouvre le Site de ProjetX" TiltFactor="2" Content="Site: projetx.nordri.fr" Margin="1,1,1,1" Grid.Row="2" Width="Auto" Height="Auto" ></Controls:Tile>
         <Controls:Tile x:Name="MainWindow_Tile_LaunchVanilla" Title="Démarre Arma3 Vanilla (sans Mods)" TiltFactor="2" Content="Lancer Arma3 Vanilla" Margin="1,1,1,1" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Width="Auto" Height="Auto" Click="MainWindow_Tile_LaunchVanilla_Click"/>
-        <Controls:Tile x:Name="MainWindow_Tile_ModCheck" Title="Vérification des Mods Projetx" TiltFactor="2" Content="Check Mods ProjetX" Margin="1,1,1,1" Grid.Row="2" Grid.Column="1" Width="Auto" Height="Auto"></Controls:Tile>
+        <Controls:Tile x:Name="MainWindow_Tile_ModCheck" Title="Vérification des Mods Projetx" TiltFactor="2" Content="Check Mods ProjetX" Margin="1,1,1,1" Grid.Row="2" Grid.Column="1" Width="Auto" Height="Auto" Click="MainWindow_Tile_ModCheck_Click"></Controls:Tile>
         <Controls:Tile x:Name="MainWindow_Tile_Arma3Settings" Title="Définir les Options de Lancement de Arma3" TiltFactor="2" Content="Arma3 Settings" Margin="1,1,1,1" Grid.Row="2" Grid.Column="2" Width="Auto" Height="Auto" Click="MainWindow_Tile_Arma3Settings_Click"></Controls:Tile>
     </Grid>
 </Controls:MetroWindow>

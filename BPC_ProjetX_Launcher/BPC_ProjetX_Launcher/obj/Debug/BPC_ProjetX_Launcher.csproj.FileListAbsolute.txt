@@ -86,3 +86,9 @@ E:\Documents\GitHub\BPCLauncherA3\BPC_ProjetX_Launcher\BPC_ProjetX_Launcher\bin\
 E:\Documents\GitHub\BPCLauncherA3\BPC_ProjetX_Launcher\BPC_ProjetX_Launcher\bin\Debug\System.Reactive.PlatformServices.xml
 E:\Documents\GitHub\BPCLauncherA3\BPC_ProjetX_Launcher\BPC_ProjetX_Launcher\bin\Debug\WampSharp.xml
 E:\Documents\GitHub\BPCLauncherA3\BPC_ProjetX_Launcher\BPC_ProjetX_Launcher\bin\Debug\WampSharp.Default.xml
+C:\Users\Zeus\Documents\GitHub\BPCLauncherA3\BPC_ProjetX_Launcher\BPC_ProjetX_Launcher\bin\Debug\BPC_ProjetX_Launcher.exe.manifest
+C:\Users\Zeus\Documents\GitHub\BPCLauncherA3\BPC_ProjetX_Launcher\BPC_ProjetX_Launcher\bin\Debug\BPC_ProjetX_Launcher.application
+C:\Users\Zeus\Documents\GitHub\BPCLauncherA3\BPC_ProjetX_Launcher\BPC_ProjetX_Launcher\bin\Debug\NetMQ.dll
+C:\Users\Zeus\Documents\GitHub\BPCLauncherA3\BPC_ProjetX_Launcher\BPC_ProjetX_Launcher\obj\Debug\BPC_ProjetX_Launcher.TrustInfo.xml
+C:\Users\Zeus\Documents\GitHub\BPCLauncherA3\BPC_ProjetX_Launcher\BPC_ProjetX_Launcher\obj\Debug\BPC_ProjetX_Launcher.exe.manifest
+C:\Users\Zeus\Documents\GitHub\BPCLauncherA3\BPC_ProjetX_Launcher\BPC_ProjetX_Launcher\obj\Debug\BPC_ProjetX_Launcher.application

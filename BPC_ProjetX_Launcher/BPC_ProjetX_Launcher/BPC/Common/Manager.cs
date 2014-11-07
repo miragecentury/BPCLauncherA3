@@ -18,6 +18,7 @@ namespace BPC_ProjetX_Launcher.BPC.Common
         BPC.Wamp.Manager wampManager = null;
         BPC.Arma3Configs.Manager configManager = null;
         BPC.Arma3.Manager arma3Manager = null;
+        BPC.Arma3Mods.Manager arma3ModManager = null;
         MainWindow mainWindow = null;
         static Manager singleton = null;
 
@@ -33,6 +34,7 @@ namespace BPC_ProjetX_Launcher.BPC.Common
             Manager.singleton = this;
             this.CheckServerStatut();
             this.configManager = new Arma3Configs.Manager();
+            this.arma3ModManager = new BPC.Arma3Mods.Manager();
             this.arma3Manager = new BPC.Arma3.Manager(this.configManager);
             if (this.serverStatus == true)
             {
@@ -63,9 +65,16 @@ namespace BPC_ProjetX_Launcher.BPC.Common
 
         public void StartLogin()
         {
-            Login lgWindow = new Login(this);
-            lgWindow.Show();
-            this.mainWindow.Hide();
+            if (this.wampManager.IsConnected())
+            {
+                Login lgWindow = new Login(this);
+                lgWindow.Show();
+                this.mainWindow.Hide();
+            }
+            else
+            {
+                //TODO : Affichage Message
+            }
         }
 
         public MainWindow getMainWindow()
@@ -139,6 +148,11 @@ namespace BPC_ProjetX_Launcher.BPC.Common
             {
                 this.wampManager.Disconnect();
             }
+        }
+
+        public BPC.Arma3Mods.Manager getModManager()
+        {
+            return this.arma3ModManager;
         }
     }
 }

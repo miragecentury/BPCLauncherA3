@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <PublishUrlHistory />
-    <InstallUrlHistory />
+    <PublishUrlHistory>ftp://ip.nordri.fr/ftp/launcher/|ftp://10.8.0.1/ftp/launcher/|ftp://ip.nordri.fr/launcher/|publier\</PublishUrlHistory>
+    <InstallUrlHistory>http://projetx.nordri.fr/ftp/launcher/|//ip.nodri.fr/ftp/launcher/</InstallUrlHistory>
     <SupportUrlHistory />
     <UpdateUrlHistory />
     <BootstrapperUrlHistory />

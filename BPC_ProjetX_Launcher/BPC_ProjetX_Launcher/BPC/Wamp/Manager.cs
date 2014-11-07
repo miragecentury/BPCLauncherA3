@@ -34,8 +34,8 @@ namespace BPC_ProjetX_Launcher.BPC.Wamp
             this.serverws = channelFactory.CreateChannel(Manager.wsUrl);
             try
             {
-                serverws.Open();
-                this.ServeurIsConnected = true;
+                //serverws.Open();
+                this.ServeurIsConnected = false;
             }
             catch (Exception e)
             {

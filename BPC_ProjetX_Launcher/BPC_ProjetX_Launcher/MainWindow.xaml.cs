@@ -164,14 +164,14 @@ namespace BPC_ProjetX_Launcher
 
         public void setEnableTileModCheck(bool enable)
         {
-            this.MainWindow_Tile_ModCheck.IsEnabled = enable;
+            //this.MainWindow_Tile_ModCheck.IsEnabled = enable;
             if (enable == true)
             {
-                this.MainWindow_Tile_ModCheck.Opacity = 1.0;
+                //this.MainWindow_Tile_ModCheck.Opacity = 1.0;
             }
             else
             {
-                this.MainWindow_Tile_ModCheck.Opacity = 0.4;
+                //this.MainWindow_Tile_ModCheck.Opacity = 0.4;
             }
         }
 
@@ -254,12 +254,19 @@ namespace BPC_ProjetX_Launcher
 
         private void MainWindow_Menu_Login_Click(object sender, RoutedEventArgs e)
         {
+
             BPC.Common.Manager.getInstance().StartLogin();
         }
 
         private void MetroWindow_Closed(object sender, EventArgs e)
         {
             BPC.Common.Manager.getInstance().Close();
+        }
+
+        private void MainWindow_Tile_ModCheck_Click(object sender, RoutedEventArgs e)
+        {
+            BPC.Common.Manager.getInstance().getModManager().getManifestServer();
+            BPC.Common.Manager.getInstance().getModManager().Check();
         }
     }
 }
