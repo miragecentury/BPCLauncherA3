@@ -9,11 +9,12 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BPC_ProjetX_Launcher</RootNamespace>
     <AssemblyName>BPC_ProjetX_Launcher</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <IsWebBootstrapper>true</IsWebBootstrapper>
+    <TargetFrameworkProfile />
     <PublishUrl>ftp://ip.nordri.fr/ftp/launcher/</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
@@ -70,6 +71,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>BPC_ProjetX_Launcher.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Castle.Core">
@@ -141,6 +145,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="zlib.net">
+      <HintPath>..\packages\zlib.net.1.0.4.0\lib\zlib.net.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -169,8 +176,7 @@
     <Compile Include="BPC\Arma3Configs\Manager.cs" />
     <Compile Include="BPC\Arma3Configs\UserConfig.cs" />
     <Compile Include="BPC\Arma3Mods\Manager.cs" />
-    <Compile Include="BPC\Arma3Mods\tool\Dir.cs" />
-    <Compile Include="BPC\Arma3Mods\tool\File.cs" />
+    <Compile Include="BPC\Arma3Mods\tool\Crc32.cs" />
     <Compile Include="BPC\Arma3Mods\tool\Manifest.cs" />
     <Compile Include="BPC\Arma3\Instance.cs" />
     <Compile Include="BPC\Arma3\Manager.cs" />

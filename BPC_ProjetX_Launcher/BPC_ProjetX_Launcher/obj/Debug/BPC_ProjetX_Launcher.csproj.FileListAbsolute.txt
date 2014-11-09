@@ -92,3 +92,10 @@ C:\Users\Zeus\Documents\GitHub\BPCLauncherA3\BPC_ProjetX_Launcher\BPC_ProjetX_La
 C:\Users\Zeus\Documents\GitHub\BPCLauncherA3\BPC_ProjetX_Launcher\BPC_ProjetX_Launcher\obj\Debug\BPC_ProjetX_Launcher.TrustInfo.xml
 C:\Users\Zeus\Documents\GitHub\BPCLauncherA3\BPC_ProjetX_Launcher\BPC_ProjetX_Launcher\obj\Debug\BPC_ProjetX_Launcher.exe.manifest
 C:\Users\Zeus\Documents\GitHub\BPCLauncherA3\BPC_ProjetX_Launcher\BPC_ProjetX_Launcher\obj\Debug\BPC_ProjetX_Launcher.application
+E:\Documents\GitHub\BPCLauncherA3\BPC_ProjetX_Launcher\BPC_ProjetX_Launcher\bin\Debug\BPC_ProjetX_Launcher.exe.manifest
+E:\Documents\GitHub\BPCLauncherA3\BPC_ProjetX_Launcher\BPC_ProjetX_Launcher\bin\Debug\BPC_ProjetX_Launcher.application
+E:\Documents\GitHub\BPCLauncherA3\BPC_ProjetX_Launcher\BPC_ProjetX_Launcher\bin\Debug\NetMQ.dll
+E:\Documents\GitHub\BPCLauncherA3\BPC_ProjetX_Launcher\BPC_ProjetX_Launcher\obj\Debug\BPC_ProjetX_Launcher.TrustInfo.xml
+E:\Documents\GitHub\BPCLauncherA3\BPC_ProjetX_Launcher\BPC_ProjetX_Launcher\obj\Debug\BPC_ProjetX_Launcher.exe.manifest
+E:\Documents\GitHub\BPCLauncherA3\BPC_ProjetX_Launcher\BPC_ProjetX_Launcher\obj\Debug\BPC_ProjetX_Launcher.application
+E:\Documents\GitHub\BPCLauncherA3\BPC_ProjetX_Launcher\BPC_ProjetX_Launcher\bin\Debug\zlib.net.dll

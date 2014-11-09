@@ -20,7 +20,7 @@ namespace BPC_ProjetX_Launcher.BPC.Arma3Mods
         String  ftpUser = "projetxmods";
         String  ftpPassword = "degrasse03";
 
-        String relativePathRepo = "";
+        String relativePathRepo = "@ProjetX_Mods";
 
         Manifest mani;
 
@@ -79,24 +79,18 @@ namespace BPC_ProjetX_Launcher.BPC.Arma3Mods
             {
                 Console.WriteLine(e.ToString());
             }
-            foreach (var item in this.manifestServer["Dirs"])
-	        {
-                Console.WriteLine("# ManifestServer : Dir : " + item);
-	        }
-            foreach (var item in this.manifestServer["Files"])
-            {
-                Console.WriteLine("# ManifestServer : Files : " + item +" : ");
-            }
-            
         }
 
         public void Check()
         {
             RegistryKey rk = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Wow6432Node\bohemia interactive\arma 3");
             String test = (String)rk.GetValue("main");
-            Console.WriteLine(test);
-            this.mani = new Manifest(test);
+
+            this.mani = new Manifest(test + "\\"+this.relativePathRepo, this.ftpUrl, this.basedir, this.ftpUser, this.ftpPassword);
             this.mani.parse();
+            this.mani.setManifestServer(manifestServer);
+            this.mani.check(true);
+
         }
     }
 }
