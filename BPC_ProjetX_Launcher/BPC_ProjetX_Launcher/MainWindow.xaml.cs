@@ -265,7 +265,7 @@ namespace BPC_ProjetX_Launcher
 
         private void MainWindow_Tile_ModCheck_Click(object sender, RoutedEventArgs e)
         {
-            BPC.Common.Manager.getInstance().getModManager().getManifestServer();
+            //BPC.Common.Manager.getInstance().getModManager().getManifestServer();
             BPC.Common.Manager.getInstance().getModManager().Check();
         }
     }

@@ -63,6 +63,30 @@ namespace BPC_ProjetX_Launcher.BPC.Arma3Mods.tool
             this.lserverfilesCrc = new List<string>();
         }
 
+        public List<string> getDirsToCreate()
+        {
+            return this.dirscreate;
+        }
+
+        public List<string> getDirsToDelete()
+        {
+            return this.dirsdelete;
+        }
+
+        public List<string> getFilesToDownload()
+        {
+            return this.filescreate;
+        }
+
+        public List<string> getFilesToUpdate()
+        {
+            return this.filesmodify;
+        }
+
+        public List<string> getFilesToDelete()
+        {
+            return this.filesdelete;
+        }
 
         public void parse()
         {

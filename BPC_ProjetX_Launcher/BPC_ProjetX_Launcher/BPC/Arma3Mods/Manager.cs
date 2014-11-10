@@ -9,16 +9,18 @@ using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using BPC_ProjetX_Launcher.BPC.Arma3Mods.tool;
 using Microsoft.Win32;
+using System.IO;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace BPC_ProjetX_Launcher.BPC.Arma3Mods
 {
     public class Manager
     {
 
-        String  ftpUrl = "ftp://ip.nordri.fr";
+        String ftpUrl = "ftp://ip.nordri.fr";
         String basedir = "/ftp/mods/projetxrepo/";
-        String  ftpUser = "projetxmods";
-        String  ftpPassword = "degrasse03";
+        String ftpUser = "projetxmods";
+        String ftpPassword = "degrasse03";
 
         String relativePathRepo = "@ProjetX_Mods";
 
@@ -60,7 +62,7 @@ namespace BPC_ProjetX_Launcher.BPC.Arma3Mods
 
 
 
-        public void getManifestServer()
+        public dynamic getManifestServer()
         {
             // Get the object used to communicate with the server.
             WebClient request = new WebClient();
@@ -72,6 +74,7 @@ namespace BPC_ProjetX_Launcher.BPC.Arma3Mods
                 byte[] newFileData = request.DownloadData(this.ftpUrl+this.basedir + "manifest.json");
                 string fileString = System.Text.Encoding.UTF8.GetString(newFileData);
                 var serializer = new JavaScriptSerializer();
+                Console.WriteLine(fileString);
                 serializer.RegisterConverters(new[] { new DynamicJsonConverter() });
                 this.manifestServer = serializer.Deserialize(fileString, typeof(object));
             }
@@ -79,6 +82,7 @@ namespace BPC_ProjetX_Launcher.BPC.Arma3Mods
             {
                 Console.WriteLine(e.ToString());
             }
+            return this.manifestServer;
         }
 
         public void Check()
@@ -87,9 +91,10 @@ namespace BPC_ProjetX_Launcher.BPC.Arma3Mods
             String test = (String)rk.GetValue("main");
 
             this.mani = new Manifest(test + "\\"+this.relativePathRepo, this.ftpUrl, this.basedir, this.ftpUser, this.ftpPassword);
-            this.mani.parse();
-            this.mani.setManifestServer(manifestServer);
-            this.mani.check(true);
+     
+            Arma3ModsWindow a3mw = new Arma3ModsWindow();
+            a3mw.Show();
+            a3mw.StartCheck(mani,this);
 
         }
     }

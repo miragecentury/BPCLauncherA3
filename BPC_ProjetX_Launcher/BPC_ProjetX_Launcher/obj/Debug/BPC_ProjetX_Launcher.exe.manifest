@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BPC_ProjetX_Launcher.exe" size="62464">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BPC_ProjetX_Launcher.exe" size="70144">
       <assemblyIdentity name="BPC_ProjetX_Launcher" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>NyjsPU7ZyvLD8S7NNDTa/HpuYtX8NXJxnawtsTp4BEw=</dsig:DigestValue>
+        <dsig:DigestValue>7ba4LpmO5M29g5ogEOjfqY1bc/IJKcbtP8WI4DLDHrE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -353,25 +353,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="zlib.net.dll" size="69632">
-      <assemblyIdentity name="zlib.net" version="1.0.3.0" publicKeyToken="47D7877CB3620160" language="neutral" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>QWe1mfNq8HgbgVY70heabTXaoxRfC2+ZrG2e4YlLUWo=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <file name="BPC_ProjetX_Launcher.exe.config" size="186">
+  <file name="BPC_ProjetX_Launcher.exe.config" size="363">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>E5pe1Moh3SVgq+7c6PIBn640UkkP2CXKbE7OhyMoiNs=</dsig:DigestValue>
+      <dsig:DigestValue>u6U90RAlSJsZ3ylhKDAJOZ6XvVNwk6m1Lec6XHUnmfc=</dsig:DigestValue>
     </hash>
   </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">
