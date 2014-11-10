@@ -158,6 +158,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="BPC\Arma3Mods\Arma3ModsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="BPC\Common\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -175,6 +179,9 @@
     </Compile>
     <Compile Include="BPC\Arma3Configs\Manager.cs" />
     <Compile Include="BPC\Arma3Configs\UserConfig.cs" />
+    <Compile Include="BPC\Arma3Mods\Arma3ModsWindow.xaml.cs">
+      <DependentUpon>Arma3ModsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="BPC\Arma3Mods\Manager.cs" />
     <Compile Include="BPC\Arma3Mods\tool\Crc32.cs" />
     <Compile Include="BPC\Arma3Mods\tool\Manifest.cs" />

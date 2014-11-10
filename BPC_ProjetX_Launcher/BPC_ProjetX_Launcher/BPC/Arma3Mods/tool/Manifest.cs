@@ -32,6 +32,13 @@ namespace BPC_ProjetX_Launcher.BPC.Arma3Mods.tool
         String basedir = "/ftp/mods/projetxrepo/";
         String ftpUser = "projetxmods";
         String ftpPassword = "degrasse03";
+        List<string> dirssimilar = new List<string>();
+        List<string> dirscreate = new List<string>();
+        List<string> dirsdelete = new List<string>();
+        List<string> filesdelete = new List<string>();
+        List<string> filescreate = new List<string>();
+        List<string> filessimilar = new List<string>();
+        List<string> filesmodify = new List<string>();
 
         public Manifest(string repoDir,string ftpUrl, string basedir, string ftpUser, string ftpPassword)
         {
@@ -99,43 +106,38 @@ namespace BPC_ProjetX_Launcher.BPC.Arma3Mods.tool
 
         public Boolean check(Boolean action)
         {
-            List<string> dirssimilar = new List<string>();
-            List<string> dirscreate = new List<string>();
-            List<string> dirsdelete = new List<string>();
-            List<string> filesdelete = new List<string>();
-            List<string> filescreate = new List<string>();
-            List<string> filessimilar = new List<string>();
-            List<string> filesmodify = new List<string>();
 
             List<string> filessimilartemp = new List<string>();
 
             Console.WriteLine("#################### CHECK DIR SIMILAR ###########################");
             foreach(var item in  this.ldirs.Intersect((IEnumerable<string>)this.lserverdirs))
             {
-                dirssimilar.Add(item);
+                this.dirssimilar.Add(item);
             }
             Console.WriteLine("#################### CHECK DIR TO CREATE ###########################");
-            foreach(var item in this.lserverdirs.Except(dirssimilar)){
-                dirscreate.Add(item);
+            foreach (var item in this.lserverdirs.Except(this.dirssimilar))
+            {
+                this.dirscreate.Add(item);
             }
             Console.WriteLine("#################### CHECK DIR TO REMOVE ###########################");
-            foreach(var item in this.ldirs.Except(dirssimilar)){
-                dirsdelete.Add(item);
+            foreach (var item in this.ldirs.Except(this.dirssimilar))
+            {
+                this.dirsdelete.Add(item);
             }
             Console.WriteLine("#################### CHECK File SIMILAR ###########################");
             foreach (var item in this.lfiles.Intersect((IEnumerable<string>)this.lserverfiles))
             {
-                filessimilar.Add(item);
+                this.filessimilar.Add(item);
             }
             Console.WriteLine("#################### CHECK DIR TO CREATE ###########################");
-            foreach (var item in this.lserverfiles.Except(filessimilar))
+            foreach (var item in this.lserverfiles.Except(this.filessimilar))
             {
-                filescreate.Add(item);
+                this.filescreate.Add(item);
             }
             Console.WriteLine("#################### CHECK DIR TO REMOVE ###########################");
-            foreach (var item in this.lfiles.Except(filessimilar))
+            foreach (var item in this.lfiles.Except(this.filessimilar))
             {
-                filesdelete.Add(item);
+                this.filesdelete.Add(item);
             }
             Console.WriteLine("#################### CHECK Files TO Modify ###########################");
             foreach (var item in filessimilar)
@@ -158,37 +160,37 @@ namespace BPC_ProjetX_Launcher.BPC.Arma3Mods.tool
                 }
                 else
                 {
-                    filesmodify.Add(item);
+                    this.filesmodify.Add(item);
                     filessimilartemp.Add(item);
                 }
             }
 
             foreach (var item in filessimilartemp)
             {
-                filessimilar.Remove(item);
+                this.filessimilar.Remove(item);
             }
 
             if (action)
             {
                 Console.WriteLine("#################### Action #######################################");
-                foreach (var item in dirscreate)
+                foreach (var item in this.dirscreate)
                 {
                     Directory.CreateDirectory(this.repoModsDir + item);
                 }
-                foreach (var item in filesdelete)
+                foreach (var item in this.filesdelete)
                 {
                     Console.WriteLine("# FILE : DELETE : " + item);
                     File.Delete(this.repoModsDir + item);
                 }
-                dirsdelete.Sort();
-                dirsdelete.Reverse();
+                this.dirsdelete.Sort();
+                this.dirsdelete.Reverse();
                 foreach (var item in dirsdelete)
                 {
                     Console.WriteLine("# DIR : DELETE : " + item);
                     Directory.Delete(this.repoModsDir + item);
                 }
-                
-                foreach (var item in filescreate)
+
+                foreach (var item in this.filescreate)
                 {
                     // Get the object used to communicate with the server.
                     WebClient request = new WebClient();
@@ -199,18 +201,20 @@ namespace BPC_ProjetX_Launcher.BPC.Arma3Mods.tool
                     newfile.Write(newFileData, 0, newFileData.Length);
                     newfile.Close();
                 }
-                foreach (var item in filesmodify)
+
+                foreach (var item in this.filesmodify)
                 {
                     File.Delete(this.repoModsDir + item);
                     //Download
                     // Get the object used to communicate with the server.
-                    WebClient request = new WebClient();
-                    // This example assumes the FTP site uses anonymous logon.
-                    request.Credentials = new NetworkCredential(this.ftpUser, this.ftpPassword);
-                    byte[] newFileData = request.DownloadData(this.ftpUrl + this.basedir + "mods/" + item);
-                    FileStream newfile = new FileStream(this.repoModsDir + item, System.IO.FileMode.Create, System.IO.FileAccess.Write);
-                    newfile.Write(newFileData, 0, newFileData.Length);
-                    newfile.Close();
+                    using(WebClient request = new WebClient()){
+                        // This example assumes the FTP site uses anonymous logon.
+                        request.Credentials = new NetworkCredential(this.ftpUser, this.ftpPassword);
+                        byte[] newFileData = request.DownloadData(this.ftpUrl + this.basedir + "mods/" + item);
+                        FileStream newfile = new FileStream(this.repoModsDir + item, System.IO.FileMode.Create, System.IO.FileAccess.Write);
+                        newfile.Write(newFileData, 0, newFileData.Length);
+                        newfile.Close();
+                    }
                 }
                 
             }
