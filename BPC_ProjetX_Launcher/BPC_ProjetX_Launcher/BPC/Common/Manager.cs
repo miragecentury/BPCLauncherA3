@@ -43,7 +43,6 @@ namespace BPC_ProjetX_Launcher.BPC.Common
             else
             {
                 //Error Message : Récupération du message d'erreur
-
             }
            
         }
@@ -58,12 +57,16 @@ namespace BPC_ProjetX_Launcher.BPC.Common
                 if (this.wampManager.IsConnected())
                 {
                     this.mainWindow.setStatusServerConnectionStatus(true);
-                    this.StartLogin();
+                    this.StartLogin(mw);
+                }
+                else
+                {
+                    //
                 }
             }
         }
 
-        public void StartLogin()
+        public void StartLogin(MainWindow mw)
         {
             if (this.wampManager.IsConnected())
             {
@@ -74,6 +77,7 @@ namespace BPC_ProjetX_Launcher.BPC.Common
             else
             {
                 //TODO : Affichage Message
+                mw.AfficherMessage("Impossible de se Connecter", "Les serveurs d'authentification sont inaccessible.");
             }
         }
 
@@ -96,9 +100,9 @@ namespace BPC_ProjetX_Launcher.BPC.Common
 
                     byte[] response =
                     client.UploadValues(Manager.urlToCheckStatus, new NameValueCollection()
-                {
-                    { "pass", "" }
-                });
+                    {
+                        { "pass", "" }
+                    });
 
                     string result = System.Text.Encoding.UTF8.GetString(response);
                     var serializer = new JavaScriptSerializer();

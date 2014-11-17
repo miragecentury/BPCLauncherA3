@@ -15,16 +15,17 @@ using System.Windows.Shapes;
 using MahApps.Metro.Controls.Dialogs;
 using BPC_ProjetX_Launcher.BPC.Arma3Mods.tool;
 using System.Runtime.CompilerServices;
+using System.IO;
 
 namespace BPC_ProjetX_Launcher.BPC.Arma3Mods
 {
 
     public class ItemEntry
     {
-        public string type { get; set; }
-        public double progress { get; set; }
-        public string path { get; set; }
-        public string size { get; set; }
+        public string TypeValue { get; set; }
+        public double ProgressValue { get; set; }
+        public string PathValue { get; set; }
+        public string SizeValue { get; set; }
     }
 
     /// <summary>
@@ -34,6 +35,11 @@ namespace BPC_ProjetX_Launcher.BPC.Arma3Mods
     {
         ProgressDialogController controller= null;
         Task<ProgressDialogController> tsk = null;
+
+        Manifest mani;
+        Manager mana;
+        List<string> populate = new List<string>();
+
         public Arma3ModsWindow()
         {
             InitializeComponent();
@@ -41,6 +47,8 @@ namespace BPC_ProjetX_Launcher.BPC.Arma3Mods
 
         public async void StartCheck(Manifest mani, Manager mana)
         {
+            this.mani = mani;
+            this.mana = mana;
             this.controller = await this.ShowProgressAsync("Please wait...", "Initialisation");
             this.controller.SetProgress(0.1);
             this.controller.SetMessage("Aquisition du Manifest");
@@ -55,38 +63,58 @@ namespace BPC_ProjetX_Launcher.BPC.Arma3Mods
             this.controller.SetMessage("Chargement des Résultats");
             this.controller.SetProgress(0.8);
 
+            foreach (var item in this.DataGrid.Items)
+            {
+                this.DataGrid.Items.Remove(item);
+            }
+
             foreach (var item in mani.getDirsToDelete())
             {
-                ItemEntry it = new ItemEntry { type = "DIR DELETE", path = item, progress = 0, size = "inconnu" };
+                ItemEntry it = new ItemEntry { TypeValue = "DELETE DIR", PathValue = item, ProgressValue = 0, SizeValue = "inconnu" };
                 this.DataGrid.Items.Add(it);
+                this.populate.Add(item);
             }
 
             foreach (var item in mani.getDirsToCreate())
             {
-                ItemEntry it = new ItemEntry { type = "DIR CREATE", path = item, progress = 0, size = "inconnu" };
+                ItemEntry it = new ItemEntry { TypeValue = "CREATE DIR", PathValue = item, ProgressValue = 0, SizeValue = "inconnu" };
+                this.DataGrid.Items.Add(it);
+                this.populate.Add(item);
             }
 
             foreach (var item in mani.getFilesToDelete())
             {
-                ItemEntry it = new ItemEntry { type = "FILE DELETE", path = item, progress = 0, size = "inconnu" };
+                ItemEntry it = new ItemEntry { TypeValue = "DELETE FILE", PathValue = item, ProgressValue = 0, SizeValue = "inconnu" };
+                this.DataGrid.Items.Add(it);
+                this.populate.Add(item);
             }
 
             foreach (var item in mani.getFilesToUpdate())
             {
-                ItemEntry it = new ItemEntry { type = "FILE UPDATE", path = item, progress = 0, size = "inconnu" };
+                ItemEntry it = new ItemEntry { TypeValue = "UPDATE FILE", PathValue = item, ProgressValue = 0, SizeValue = "inconnu" };
+                this.DataGrid.Items.Add(it);
+                this.populate.Add(item);
             }
 
             foreach (var item in mani.getFilesToDownload())
             {
-                ItemEntry it = new ItemEntry { type = "FILE DOWNLOAD", path = item, progress = 0, size = "inconnu" };
+                ItemEntry it = new ItemEntry { TypeValue = "DOWNLOAD FILE", PathValue = item, ProgressValue = 0, SizeValue = "inconnu" };
+                this.DataGrid.Items.Add(it);
+                this.populate.Add(item);
             }
             
             await this.controller.CloseAsync();
+
         }
 
-        public void EndCheck()
+        private void LaunchMaj_Click(object sender, RoutedEventArgs e)
         {
-           
+            this.LaunchMaj.IsEnabled = false;
+
+            this.mani.Action(this.DataGrid,this.populate);
+
+            //this.StartCheck(this.mani, this.mana);
+            this.LaunchMaj.IsEnabled = true;
         }
     }
 }

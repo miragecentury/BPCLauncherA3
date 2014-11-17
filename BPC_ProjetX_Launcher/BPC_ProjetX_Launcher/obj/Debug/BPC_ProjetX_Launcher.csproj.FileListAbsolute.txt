@@ -98,6 +98,7 @@ E:\Documents\GitHub\BPCLauncherA3\BPC_ProjetX_Launcher\BPC_ProjetX_Launcher\bin\
 E:\Documents\GitHub\BPCLauncherA3\BPC_ProjetX_Launcher\BPC_ProjetX_Launcher\obj\Debug\BPC_ProjetX_Launcher.TrustInfo.xml
 E:\Documents\GitHub\BPCLauncherA3\BPC_ProjetX_Launcher\BPC_ProjetX_Launcher\obj\Debug\BPC_ProjetX_Launcher.exe.manifest
 E:\Documents\GitHub\BPCLauncherA3\BPC_ProjetX_Launcher\BPC_ProjetX_Launcher\obj\Debug\BPC_ProjetX_Launcher.application
-E:\Documents\GitHub\BPCLauncherA3\BPC_ProjetX_Launcher\BPC_ProjetX_Launcher\bin\Debug\zlib.net.dll
 C:\Users\Zeus\Documents\GitHub\BPCLauncherA3\BPC_ProjetX_Launcher\BPC_ProjetX_Launcher\obj\Debug\BPC\Arma3Mods\Arma3ModsWindow.baml
 C:\Users\Zeus\Documents\GitHub\BPCLauncherA3\BPC_ProjetX_Launcher\BPC_ProjetX_Launcher\obj\Debug\BPC\Arma3Mods\Arma3ModsWindow.g.cs
+E:\Documents\GitHub\BPCLauncherA3\BPC_ProjetX_Launcher\BPC_ProjetX_Launcher\obj\Debug\BPC\Arma3Mods\Arma3ModsWindow.baml
+E:\Documents\GitHub\BPCLauncherA3\BPC_ProjetX_Launcher\BPC_ProjetX_Launcher\obj\Debug\BPC\Arma3Mods\Arma3ModsWindow.g.cs

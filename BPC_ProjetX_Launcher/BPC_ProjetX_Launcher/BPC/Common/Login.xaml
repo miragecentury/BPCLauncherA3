@@ -18,7 +18,7 @@
         <Label Content="et votre password de votre compte BPC." Grid.Row="1" Grid.RowSpan="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
         <TextBox x:Name="Login_TextBox_Email" Height="30" Margin="5,0,5,0" TextWrapping="Wrap" Controls:TextboxHelper.Watermark="Email" Text="" Grid.Row="3" Grid.RowSpan="1"/>
         <PasswordBox  x:Name="Login_PasswordBox_Password" Height="30" Margin="5,0,5,0" Controls:TextboxHelper.Watermark="Password"  Grid.Row="4"/>
-        <Button x:Name="Login_Button_Authentification" Content="Authentitification" Margin="10,6,10,0" VerticalAlignment="Top" Grid.Row="6" Click="Login_Button_Authentification_Click"/>
+        <Button x:Name="Login_Button_Authentification" Content="Authentification" Margin="10,6,10,0" VerticalAlignment="Top" Grid.Row="6" Click="Login_Button_Authentification_Click"/>
         <Button x:Name="Login_Button_Annuler" Content="Annuler" Margin="10,11,10,0" VerticalAlignment="Top" Grid.Row="7" Click="Login_Button_Annuler_Click"/>
     </Grid>
 </Controls:MetroWindow>

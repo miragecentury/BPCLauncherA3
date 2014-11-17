@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DamienG.Security.Cryptography;
 using System.IO;
 using System.Net;
+using System.Windows.Controls;
 
 namespace BPC_ProjetX_Launcher.BPC.Arma3Mods.tool
 {
@@ -132,6 +133,13 @@ namespace BPC_ProjetX_Launcher.BPC.Arma3Mods.tool
         {
 
             List<string> filessimilartemp = new List<string>();
+            this.dirssimilar = new List<string>();
+            this.dirsdelete = new List<string>();
+            this.dirscreate = new List<string>();
+            this.filescreate = new List<string>();
+            this.filesdelete = new List<string>();
+            this.filesmodify = new List<string>();
+            this.filessimilar = new List<string>();
 
             Console.WriteLine("#################### CHECK DIR SIMILAR ###########################");
             foreach(var item in  this.ldirs.Intersect((IEnumerable<string>)this.lserverdirs))
@@ -167,7 +175,8 @@ namespace BPC_ProjetX_Launcher.BPC.Arma3Mods.tool
             foreach (var item in filessimilar)
             {
                 int index = this.lserverfiles.IndexOf(item);
-                string CRC = this.lserverfilesCrc.ElementAt(index);
+                String CRC = String.Empty;
+                CRC = this.lserverfilesCrc.ElementAt(index);
 
                 Crc32 crc32 = new Crc32();
                 String hash = String.Empty;
@@ -176,14 +185,17 @@ namespace BPC_ProjetX_Launcher.BPC.Arma3Mods.tool
                 {
                     foreach (byte b in crc32.ComputeHash(fs)) hash += b.ToString("x2").ToLower();
                 }
+                
                 hash = hash.ToUpper();
-                //Console.WriteLine("CRC-32 is {0}", hash);
+                CRC = CRC.PadLeft(8, '0');
+
                 if (hash == CRC)
                 {
                     //Ok
                 }
                 else
                 {
+                    Console.WriteLine("ERREUR CRC : " + hash + " : " + CRC);
                     this.filesmodify.Add(item);
                     filessimilartemp.Add(item);
                 }
@@ -251,6 +263,83 @@ namespace BPC_ProjetX_Launcher.BPC.Arma3Mods.tool
             {
                 return true;
             }
+        }
+
+        public void Action(DataGrid dt,List<string>populate)
+        {
+            foreach (var item in this.dirscreate)
+            {
+                int index = populate.IndexOf(item);
+                ItemEntry it = (ItemEntry)dt.Items[index];
+                it.ProgressValue = 5;
+                Directory.CreateDirectory(this.repoModsDir + item);
+                it.ProgressValue = 100;
+                dt.UpdateLayout();
+                dt.Items.Refresh();
+            }
+            foreach (var item in this.filesdelete)
+            {
+                int index = populate.IndexOf(item);
+                ItemEntry it = (ItemEntry)dt.Items[index];
+                it.ProgressValue = 20;
+                Console.WriteLine("# FILE : DELETE : " + item);
+                File.Delete(this.repoModsDir + item);
+                it.ProgressValue = 100;
+                dt.Items.Refresh();
+            }
+            this.dirsdelete.Sort();
+            this.dirsdelete.Reverse();
+            foreach (var item in dirsdelete)
+            {
+                int index = populate.IndexOf(item);
+                ItemEntry it = (ItemEntry)dt.Items[index];
+                it.ProgressValue = 20;
+                Console.WriteLine("# DIR : DELETE : " + item);
+                Directory.Delete(this.repoModsDir + item);
+                it.ProgressValue = 100;
+                dt.Items.Refresh();
+            }
+
+            foreach (var item in this.filescreate)
+            {
+                int index = populate.IndexOf(item);
+                ItemEntry it = (ItemEntry)dt.Items[index];
+                it.ProgressValue = 20;
+                // Get the object used to communicate with the server.
+                WebClient request = new WebClient();
+                // This example assumes the FTP site uses anonymous logon.
+                request.Credentials = new NetworkCredential(this.ftpUser, this.ftpPassword);
+                byte[] newFileData = request.DownloadData(this.ftpUrl + this.basedir + "mods/" + item);
+                FileStream newfile = new FileStream(this.repoModsDir + item, System.IO.FileMode.Create, System.IO.FileAccess.Write);
+                newfile.Write(newFileData, 0, newFileData.Length);
+                newfile.Close();
+                it.ProgressValue = 100;
+                dt.Items.Refresh();
+            }
+
+            foreach (var item in this.filesmodify)
+            {
+                int index = populate.IndexOf(item);
+                ItemEntry it = (ItemEntry)dt.Items[index];
+                it.ProgressValue = 20;
+                File.Delete(this.repoModsDir + item);
+                it.ProgressValue = 50;
+                //Download
+                // Get the object used to communicate with the server.
+                using (WebClient request = new WebClient())
+                {
+                    // This example assumes the FTP site uses anonymous logon.
+                    request.Credentials = new NetworkCredential(this.ftpUser, this.ftpPassword);
+                    byte[] newFileData = request.DownloadData(this.ftpUrl + this.basedir + "mods/" + item);
+                    FileStream newfile = new FileStream(this.repoModsDir + item, System.IO.FileMode.Create, System.IO.FileAccess.Write);
+                    newfile.Write(newFileData, 0, newFileData.Length);
+                    newfile.Close();
+                }
+                it.ProgressValue = 100;
+                dt.Items.Refresh();
+            }
+
+
         }
 
     }

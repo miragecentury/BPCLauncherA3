@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace BPC_ProjetX_Launcher
 {
@@ -164,14 +165,14 @@ namespace BPC_ProjetX_Launcher
 
         public void setEnableTileModCheck(bool enable)
         {
-            //this.MainWindow_Tile_ModCheck.IsEnabled = enable;
+            this.MainWindow_Tile_ModCheck.IsEnabled = enable;
             if (enable == true)
             {
-                //this.MainWindow_Tile_ModCheck.Opacity = 1.0;
+                this.MainWindow_Tile_ModCheck.Opacity = 1.0;
             }
             else
             {
-                //this.MainWindow_Tile_ModCheck.Opacity = 0.4;
+                this.MainWindow_Tile_ModCheck.Opacity = 0.4;
             }
         }
 
@@ -255,7 +256,7 @@ namespace BPC_ProjetX_Launcher
         private void MainWindow_Menu_Login_Click(object sender, RoutedEventArgs e)
         {
 
-            BPC.Common.Manager.getInstance().StartLogin();
+            BPC.Common.Manager.getInstance().StartLogin(this);
         }
 
         private void MetroWindow_Closed(object sender, EventArgs e)
@@ -265,8 +266,12 @@ namespace BPC_ProjetX_Launcher
 
         private void MainWindow_Tile_ModCheck_Click(object sender, RoutedEventArgs e)
         {
-            //BPC.Common.Manager.getInstance().getModManager().getManifestServer();
             BPC.Common.Manager.getInstance().getModManager().Check();
+        }
+
+        public async void AfficherMessage(String Titre, String message)
+        {
+            await this.ShowMessageAsync(Titre, message);
         }
     }
 }
