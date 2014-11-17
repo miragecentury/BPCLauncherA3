@@ -41,6 +41,11 @@ namespace BPC_ProjetX_Launcher.BPC.Arma3Mods.tool
         List<string> filessimilar = new List<string>();
         List<string> filesmodify = new List<string>();
 
+        delegate void updateProgress(int index,int val);
+
+        DataGrid dt;
+        List<string> populate;
+
         public Manifest(string repoDir,string ftpUrl, string basedir, string ftpUser, string ftpPassword)
         {
             this.ftpUrl = ftpUrl;
@@ -62,6 +67,12 @@ namespace BPC_ProjetX_Launcher.BPC.Arma3Mods.tool
             this.lserverdirs = new List<string>();
             this.lserverfiles = new List<string>();
             this.lserverfilesCrc = new List<string>();
+        }
+
+        public void prepareAction(DataGrid dt, List<string> populate)
+        {
+            this.dt = dt;
+            this.populate = populate;
         }
 
         public List<string> getDirsToCreate()
@@ -265,46 +276,67 @@ namespace BPC_ProjetX_Launcher.BPC.Arma3Mods.tool
             }
         }
 
-        public void Action(DataGrid dt,List<string>populate)
+        public void Action()
         {
+            
+            updateProgress mar = delegate(int index, int val)
+            {
+                ItemEntry it = (ItemEntry)this.dt.Items[index];
+                it.ProgressValue = val;
+                this.dt.Items.Refresh();
+            };
+            
+            
             foreach (var item in this.dirscreate)
             {
-                int index = populate.IndexOf(item);
-                ItemEntry it = (ItemEntry)dt.Items[index];
-                it.ProgressValue = 5;
+                int index = this.populate.IndexOf(item);
+                lock (this.dt) { 
+                    App.Current.Dispatcher.Invoke(mar, index,5);
+                };
                 Directory.CreateDirectory(this.repoModsDir + item);
-                it.ProgressValue = 100;
-                dt.UpdateLayout();
-                dt.Items.Refresh();
+                lock (this.dt)
+                {
+                    App.Current.Dispatcher.Invoke(mar, index, 100);
+                };
             }
             foreach (var item in this.filesdelete)
             {
-                int index = populate.IndexOf(item);
-                ItemEntry it = (ItemEntry)dt.Items[index];
-                it.ProgressValue = 20;
+                int index = this.populate.IndexOf(item);
+                lock (this.dt)
+                {
+                    App.Current.Dispatcher.Invoke(mar, index, 20);
+                };
                 Console.WriteLine("# FILE : DELETE : " + item);
                 File.Delete(this.repoModsDir + item);
-                it.ProgressValue = 100;
-                dt.Items.Refresh();
+                lock (this.dt)
+                {
+                    App.Current.Dispatcher.Invoke(mar, index, 100);
+                };
             }
             this.dirsdelete.Sort();
             this.dirsdelete.Reverse();
             foreach (var item in dirsdelete)
             {
-                int index = populate.IndexOf(item);
-                ItemEntry it = (ItemEntry)dt.Items[index];
-                it.ProgressValue = 20;
+                int index = this.populate.IndexOf(item);
+                lock (this.dt)
+                {
+                    App.Current.Dispatcher.Invoke(mar, index, 20);
+                };
                 Console.WriteLine("# DIR : DELETE : " + item);
                 Directory.Delete(this.repoModsDir + item);
-                it.ProgressValue = 100;
-                dt.Items.Refresh();
+                lock (this.dt)
+                {
+                    App.Current.Dispatcher.Invoke(mar, index, 100);
+                };
             }
 
             foreach (var item in this.filescreate)
             {
-                int index = populate.IndexOf(item);
-                ItemEntry it = (ItemEntry)dt.Items[index];
-                it.ProgressValue = 20;
+                int index = this.populate.IndexOf(item);
+                lock (this.dt)
+                {
+                    App.Current.Dispatcher.Invoke(mar, index, 20);
+                };
                 // Get the object used to communicate with the server.
                 WebClient request = new WebClient();
                 // This example assumes the FTP site uses anonymous logon.
@@ -313,17 +345,24 @@ namespace BPC_ProjetX_Launcher.BPC.Arma3Mods.tool
                 FileStream newfile = new FileStream(this.repoModsDir + item, System.IO.FileMode.Create, System.IO.FileAccess.Write);
                 newfile.Write(newFileData, 0, newFileData.Length);
                 newfile.Close();
-                it.ProgressValue = 100;
-                dt.Items.Refresh();
+                lock (this.dt)
+                {
+                    App.Current.Dispatcher.Invoke(mar, index, 100);
+                };
             }
 
             foreach (var item in this.filesmodify)
             {
-                int index = populate.IndexOf(item);
-                ItemEntry it = (ItemEntry)dt.Items[index];
-                it.ProgressValue = 20;
+                int index = this.populate.IndexOf(item);
+                lock (this.dt)
+                {
+                    App.Current.Dispatcher.Invoke(mar, index, 20);
+                };
                 File.Delete(this.repoModsDir + item);
-                it.ProgressValue = 50;
+                lock (this.dt)
+                {
+                    App.Current.Dispatcher.Invoke(mar, index, 50);
+                };
                 //Download
                 // Get the object used to communicate with the server.
                 using (WebClient request = new WebClient())
@@ -335,8 +374,10 @@ namespace BPC_ProjetX_Launcher.BPC.Arma3Mods.tool
                     newfile.Write(newFileData, 0, newFileData.Length);
                     newfile.Close();
                 }
-                it.ProgressValue = 100;
-                dt.Items.Refresh();
+                lock (this.dt)
+                {
+                    App.Current.Dispatcher.Invoke(mar, index, 100);
+                };
             }
 
 

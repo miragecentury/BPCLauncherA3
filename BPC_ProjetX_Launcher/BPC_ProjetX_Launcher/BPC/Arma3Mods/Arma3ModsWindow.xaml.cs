@@ -16,6 +16,7 @@ using MahApps.Metro.Controls.Dialogs;
 using BPC_ProjetX_Launcher.BPC.Arma3Mods.tool;
 using System.Runtime.CompilerServices;
 using System.IO;
+using System.Threading;
 
 namespace BPC_ProjetX_Launcher.BPC.Arma3Mods
 {
@@ -110,9 +111,9 @@ namespace BPC_ProjetX_Launcher.BPC.Arma3Mods
         private void LaunchMaj_Click(object sender, RoutedEventArgs e)
         {
             this.LaunchMaj.IsEnabled = false;
-
-            this.mani.Action(this.DataGrid,this.populate);
-
+            this.mani.prepareAction(this.DataGrid, this.populate);
+            Thread th = new Thread(this.mani.Action);
+            th.Start();
             //this.StartCheck(this.mani, this.mana);
             this.LaunchMaj.IsEnabled = true;
         }
